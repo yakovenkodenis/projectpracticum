@@ -1,2 +1,2 @@
-# projectpracticum
-The repository for labs from the Project Practicum classes
+# Проектный Практикум ПИ-13-5
+В данном репозитории хранятся файлы для лабораторных работ по предмету Проектный Практикум
