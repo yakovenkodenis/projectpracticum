@@ -1,0 +1,40 @@
+body,h1, h2, h3, h4, h5, h6 {
+    font-family: verdana;
+}
+.fs12 {
+    font-size: 12px;
+}
+.pavblog-latest .blog-item .blog-title {
+ background-color: #404040;
+}
+.pavblog-latest .blog-item:hover .blog-title {
+ background-color: #F48280;
+ }
+ h1 {
+  font-size:24px;
+ }
+ h2 {
+    font-size: 20px;
+}
+ h3 {
+    font-size: 18px;
+    line-height: 42px;
+}
+h4 {
+ font-size: 14px;
+ }
+#footer h3 {
+ font-size: 12px;
+ }
+ .pavblog-latest .blog-item .blog-title a {
+  font-size: 12px;}
+  .pav-categoryproducts .tab-nav ul li a {
+   font-size: 14px;
+    font-weight: 600;
+}
+
+.box-style p {
+    font-size: 11px;
+}
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+ width: 1170px;}

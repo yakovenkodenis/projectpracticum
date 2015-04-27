@@ -1,0 +1,223 @@
+a:hover, a:focus {
+    color: #f3bc15;
+}
+
+ul.list li:hover a {
+    color: #f3bc15;
+}
+
+ .dropdown .dropdown-menu li a:hover {
+    color: #f3bc15;
+ }
+
+.dropdown-submenu > a,
+.dropdown-menu > li > a{
+  color: #f3bc15!important;
+}
+#headertop .login {
+    color: #f3bc15;
+}
+
+#currency a b {
+  color: #f3bc15;
+}
+
+.login.open a.login-icon {
+   color: #f3bc15;
+}
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
+   color: #f3bc15;
+}
+
+.breadcrumb a:last-child {
+  color: #f3bc15;
+}
+
+
+.sidebar ul li a.active,
+.sidebar ul li a:hover{
+  color: #f3bc15;
+}
+
+.box-style h3 > span {
+   color: #f3bc15;
+}
+
+.product-block:hover .name a {
+  color: #f3bc15;
+}
+
+.copyright  a {
+  color:#f3bc15;
+ }
+/*border*/
+
+#headertop .login-content {
+  border: 3px solid #f3bc15;
+}
+#cart .content {
+    border-top: 5px solid #f3bc15;
+}
+
+.login.open a.login-icon:before {
+   border-bottom: 8px solid #f3bc15;
+}
+
+.htabs a.selected:before {
+    border-top: 7px solid #f3bc15;
+}
+.htabs a.selected:after {
+  border-bottom: 1px solid #f3bc15;
+}
+
+.product-block:hover .image {
+  border: 5px solid #f3bc15;
+}
+
+.product-related .title-related span:before {
+    border-top: 7px solid #f3bc15;
+}
+
+.product-related .title-related span:after {
+    border-bottom: 1px solid #f3bc15;
+ }
+ .pav-categoryproducts .tab-nav ul li.active a:before {
+    border-top: 7px solid #f3bc15;
+}
+.pav-categoryproducts .tab-nav ul li.active a:after {
+    border-bottom: 1px solid #f3bc15;
+}
+.navbar .nav li.dropdown > a:hover .caret, .navbar .nav li.dropdown > a:focus .caret {
+    border-bottom-color: #f3bc15;
+    border-top-color: #f3bc15;
+}
+/*background*/
+.pav-categoryproducts .tab-nav ul li.active a {
+    background: #f3bc15;
+}
+.checkout > a:hover,
+a.button:hover, input.button:hover {
+  background: #f3bc15;
+}
+
+.htabs a.selected {
+  background: #f3bc15;
+}
+
+.sidebar .box h3.box-heading{
+  background-color: #f3bc15;
+}
+
+.wishlist a,
+.compare a {
+  background-color: #f3bc15;
+}
+
+.category-list ul li a {
+    background-color: #f3bc15;
+    border: 1px solid #e4af10;
+}
+
+.newsletter-submit .button {
+  background-color: #f3bc15;
+}
+.product-info .image-additional .carousel-control:hover {
+   background-color: #f3bc15;
+}
+.newsletter-submit .button {
+  background-color: #f3bc15;
+}
+
+.product-related .title-related span{
+  background: #f3bc15;
+}
+.social ul li:after {
+  background-color: #f3bc15;
+}
+#off-canvas-nav .pavo-mainnav {
+  background: #f3bc15;
+}
+.navbar .btn-navbar {
+    background: none repeat scroll 0 0 #f3bc15;
+}
+/*other color*/
+
+#header .container-inner {
+    border-bottom: 1px solid #c8c4b9;
+    border-left: 1px solid #c8c4b9;
+    border-right: 1px solid #c8c4b9
+}
+#off-canvas-nav .megamenu li a {
+    border-bottom: 1px solid #8ac789;
+   }
+.navbar .btn-navbar:hover, .navbar .btn-navbar:focus, .navbar .btn-navbar:active, .navbar .btn-navbar.active {
+    background: none repeat scroll 0 0 #6fa56e;
+}
+#headerbottom .container-inner {
+    background-color: #dcd9d1;
+}
+  .pavblog-latest .blog-item:hover .readmore,
+.blog-item .readmore:hover {
+    color: #f3bc15;
+     border: 1px solid #f3bc15;
+  
+}
+.wishlist a:hover, .compare a:hover {
+    background-color: #358aea;
+}
+.pavblog-latest .blog-item:hover .blog-title {
+    background-color: rgba(243, 188, 21, 0.85);
+}
+#mainnav,
+#header {
+  background-color: #d0ccc1;
+}
+
+.page-home #slideshow,
+.page-common-home  #slideshow,
+.page-home #sys-notification,
+.page-common-home  #sys-notification ,
+.page-home #columns,
+.page-common-home  #columns,
+.page-home #pav-promotion,
+.page-common-home  #pav-promotion {
+  background-color: #d0ccc1;
+}
+
+.product-compare a {
+  background-color: #f3bc15;
+background-image: -moz-linear-gradient(top, #fdd250, #f3bc15);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdd250), to(#f3bc15));
+  background-image: -webkit-linear-gradient(top, #fdd250, #f3bc15);
+  background-image: -o-linear-gradient(top, #fdd250, #f3bc15);
+  background-image: linear-gradient(to bottom, #fdd250, #f3bc15);
+  border-top: 1px solid #efb810;
+  border-right: 1px solid #e5b216;
+  border-left: 1px solid #e5b216; 
+  border-bottom: 1px solid #d9a711;
+}
+/*background-image*/
+ul.list li:hover {
+    background-position: 0 -201px;
+}
+.login a.login-icon, #headertop .links a {
+    background-image: url("../image/icon-account.png");
+}
+#cart .cart-icon {
+    background-position: center -157px;
+}
+.dropdown .dropdown-menu li a:hover {
+    background-position: left -200px;
+}
+.sidebar ul li a.active, .sidebar ul li a:hover {
+    background-position: 0 -207px;
+}
+.box-style {
+    background-image: url("../image/icon.png");
+}
+.product-filter .display a.grid:hover, .product-filter .display a.grid.active {
+    background-position: left -108px;
+}
+.product-filter .display a.list:hover, .product-filter .display a.list.active {
+    background-position: -20px -108px;
+}

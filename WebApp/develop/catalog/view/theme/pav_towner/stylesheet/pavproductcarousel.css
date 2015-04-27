@@ -1,0 +1,58 @@
+.box-products {
+	position:relative;
+}
+.productcarousel {
+	padding: 15px 25px;
+}
+.productcarousel .carousel-control{
+	z-index:10
+}
+
+.productcarousel .nav{
+	padding:0;
+	margin:0
+}
+.productcarousel .carousel-controls{
+	
+}
+.productcarousel .carousel-control {
+   border: medium none;
+    height: 37px;
+    opacity: 1;
+    overflow: hidden;
+    text-indent: -9999em;
+    width: 19px;
+    top: 30%;
+    border-radius: 0;
+    margin-top: 0;
+}
+.productcarousel .carousel-control.left {
+	background: url(../image/default/control-left.png) left top no-repeat scroll;
+	left: -26px;
+}
+.productcarousel .carousel-control.right {
+	background: url(../image/default/control-right.png) left top no-repeat scroll;
+	right: -26px;
+}
+.productcarousel .tab-content, .producttabs .box-product{
+	overflow:inherit
+}
+.productcarousel .product-block {
+	margin-top: 0;
+}
+.productcarousel .product-block .image {
+    border: 1px solid #E7E7E7;
+    box-shadow: none;
+    float: left;
+    margin-right: 10px;
+    width: 27%;
+}
+.productcarousel .product-block:hover .image {
+    border: 1px solid #E7E7E7;
+}
+.productcarousel .product-block .rating {
+	margin: 0;
+}
+.productcarousel .product-block .price {
+	font-size: 16px;
+}

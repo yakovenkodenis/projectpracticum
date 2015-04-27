@@ -1,0 +1,24 @@
+
+.box.carousel .carousel-group {
+	 border: 1px solid #eaeaea;
+	 padding: 15px 20px;
+}
+.box.carousel .carousel-control {
+   border: medium none;
+    height: 27px;
+    opacity: 1;
+    overflow: hidden;
+    text-indent: -9999em;
+    width: 14px;
+    top: 36%;
+    border-radius: 0;
+    margin-top: 0;
+}
+.box.carousel .carousel-control.left {
+	background: url(../image/default/carousel-left.png) left top no-repeat scroll #ffffff ;
+	left: 4px;
+}
+.box.carousel .carousel-control.right {
+	background: url(../image/default/carousel-right.png) left top no-repeat scroll #ffffff ;
+	right: 4px;
+}

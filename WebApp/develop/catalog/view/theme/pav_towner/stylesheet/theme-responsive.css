@@ -1,0 +1,394 @@
+/* Large desktop */
+@media only screen and (max-width: 1199px) {
+    /* Code CSS here */
+	.product-block:hover .colorbox.product-zoom {
+		bottom: 26%;
+	}
+	.product-block .compare a, .product-block .wishlist a {
+		top: 29%;
+	}
+	.product-block:hover .cart {
+		top: 17%;
+	}
+}
+
+/*Ipad landscape*/
+
+@media only screen and (max-width: 979px) {
+	#headerbottom .logo {
+		width: 100%;
+		text-align: center;
+	}
+	.page-home #pavo-showcase .container, .page-common-home #pavo-showcase .container {
+		margin-top: 0;
+	}
+	.page-home #pav-promotion .container, .page-common-home #pav-promotion .container {
+		padding-bottom: 0;
+	}
+	.pav-promotion {
+		display: none;
+	}
+  .mainnav-inner{
+		min-height: 40px;
+		position: absolute;
+		top: 0;
+		width: 42px;
+		background: none;
+	}
+
+
+	
+/*menu*/
+	.navbar {
+		 margin-bottom: 0;
+	}	
+	.navbar-inner {
+		 margin-top: 0;
+	}
+	.btn.btn-navbar {
+		float: left;
+		margin: 5px 5px 5px 15px;
+		padding: 7px 6px;
+	}
+	.navbar-inner {
+		padding : 0 ;
+	}
+	.nav-collapse .megamenu:after {
+		border-bottom: 10px solid #5F9A7B;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		content: "";
+		display: inline-block;
+		left: 16px;
+		position: absolute;
+		top: -15px;
+	}
+	.nav-collapse .megamenu:before {
+		border-bottom: 11px solid rgba(225, 225, 225, 0.2);
+		border-left: 11px solid transparent;
+		border-right: 11px solid transparent;
+		content: "";
+		display: inline-block;
+		left: 15px;
+		position: absolute;
+		top: -16px;
+	}
+	.nav-collapse .megamenu {
+		border-top: 5px solid #5F9A7B;
+		border-right: none;
+		border-left: none;
+		border-bottom: none;
+		box-shadow: 0 0 5px #999;
+		border-radius: 0;
+		background: #5F9A7B;
+		margin: 10px 0 0!important;
+	}
+	.nav-collapse .nav li.homepage a {
+	    background: none repeat scroll 0 0 transparent;
+		display: block;
+		overflow: hidden;
+		padding-left: 0;
+		text-indent: inherit;
+		width: auto;
+		padding-left: 15px;
+	}
+	.nav-collapse .nav > li{
+		background: none;
+	}
+	.nav-collapse .nav > li > a{
+		font-weight: normal;
+		color: #ffffff !important;
+		padding-top:0;
+		padding-bottom: 0;
+	}
+	.nav-collapse .dropdown-menu {
+		background: #518b6d;
+	}
+	.nav-collapse .nav > li > a:hover, .nav-collapse .nav > li > a:focus,
+	 .nav-collapse .dropdown-menu a:hover, .nav-collapse .dropdown-menu a:focus,
+	.nav-collapse .nav.megamenu  > li.open, .nav-collapse .nav.megamenu  > li:hover {
+		background: none repeat scroll 0 0 #6EAA8A;
+
+		color: #ffffff;
+	}
+	.nav-collapse .dropdown-menu li a {
+		color: #fff;
+		padding: 0;
+		font-weight: normal;
+	}
+	.nav-collapse .nav > li > .dropdown-menu:after {
+		border-bottom: 10px solid #518b6d;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		content: "";
+		display: inline-block;
+		left: 17px;
+		position: absolute;
+		top: 50px;
+	}
+	.nav-collapse .nav > li > .dropdown-menu:after {
+		border-bottom: 10px solid #518b6d;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		content: "";
+		display: inline-block;
+		left: 17px;
+		position: absolute;
+		top: 34px;
+	}
+	.nav-collapse .dropdown-menu a:hover, .nav-collapse .dropdown-menu a:focus {
+		background: none!important;
+	}
+	/*logo*/
+	#header #logo {
+		 position: relative;
+		 text-align: center;
+		}
+
+/*cart-top*/
+	
+
+/*slideshow*/
+	
+
+/*produce*/
+	.box-produce .product-inner .name {
+		clear: both;
+	}
+	
+	.product-info .image-additional {
+		clear: none;
+	}
+	
+	#headertop .login{
+		margin-left: 5px;
+	}
+	#header .links {
+		margin-left: 0;
+	}
+	.return-reason,.return-opened,.return-captcha,
+	.return-model,
+	.return-name {
+		 width:  97%;
+	}
+	.checkout-content .left {
+		width: 100%;
+	}
+	.checkout-content .right {
+		width: 100%;
+	}
+	.product-block:hover .colorbox.product-zoom {
+		bottom: 20%;
+	}
+
+	.product-block:hover .compare a {
+		right: 18%;
+	}
+	.product-block:hover .wishlist a {
+		left: 18%;
+	}
+	.product-block .compare a, .product-block .wishlist a {
+		top: 22%;
+	}
+	.product-block:hover .cart {
+		top: 13%;
+	}
+	
+	
+}
+/*Ipad Portrait*/
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+
+	.header-right {
+		width: 50%!important;
+	}
+	#pav-paneltool { display: none;}
+	.product-info .image-additional a{
+		margin-left: 0;
+		width: 75px;
+	}
+}
+
+
+/* Iphone 5 landscape */
+@media only screen and (max-width: 767px) {
+	.zoomContainer {
+		display: none;
+	}
+
+	.box-produce .product-inner .name {
+		clear: none;
+	}
+	.pav-categoryproducts .tab-content .product-block {
+		 width:  46%!important;
+		 margin: 10px;
+
+		float: left;
+	}
+	.pav-categoryproducts .tab-nav ul {
+		margin-left: 1px;
+	}
+
+	
+	/*Table*/
+    table{
+        width:100%;
+    }
+    table .price{
+        margin: 0;
+    }
+    table td, table th{
+        display:block;
+        float:none;        
+        text-align: left !important;
+        vertical-align: middle !important;
+        overflow: hidden;
+    }
+    table.radio td, table.radio th {
+    display: inline-block;
+    overflow: visible;
+}
+    table td.image, table th.image{
+        text-align: center !important;
+    }
+    table span.phone{
+        color: #333333;
+        font-size: 13px;
+        float: left;        
+    }
+    table td .avg-right{
+        text-align: right;
+        float: right;
+    }
+    table td.quantity span.phone{
+        padding: 5px 10px 0 0;
+    }   
+    table.radio tr td:first-child{
+        width: auto;
+    }
+    .mini-cart-total table td, .mini-cart-total table th,
+    .mini-cart-info table td, .mini-cart-info table th {
+    	 display: inline-block;
+        text-align: right!important;
+    }
+		
+	.mini-cart-info .image {
+		display:none;
+	}
+
+	.product-block:hover .colorbox.product-zoom {
+		bottom: 20%;
+	}
+
+	.product-block:hover .compare a {
+		right: 18%;
+	}
+	.product-block:hover .wishlist a {
+		left: 18%;
+	}
+	.product-block .compare a, .product-block .wishlist a {
+		top: 22%;
+	}
+	.product-block:hover .cart {
+		top: 13%;
+	}
+	
+
+}
+@media only screen and (min-width: 600px) and (max-width: 766px) {
+	.product-related [class*="span"], .product-related .row-fluid [class*="span"],
+	.product-grid [class*="span"], .product-grid .row-fluid [class*="span"],
+	.box-product [class*="span"], .box-product .row-fluid [class*="span"] {
+		float:  left;
+		width: 31.9149%;
+		margin-left:2.12766%;
+	}
+	.box-product .row-fluid [class*="span"]:first-child,
+	.product-related .row-fluid [class*="span"]:first-child,
+	.product-grid .row-fluid [class*="span"]:first-child {
+    margin-left: 0;
+}
+}
+ @media only screen and (max-width: 599px){
+	.product-list .product-block .image {
+		width: 100%;
+	}
+	.pav-categoryproducts .tab-nav ul li a {
+		 font-size: 12px;
+		 padding:  0 10px;
+	}
+
+	.pav-categoryproducts .tab-content .product-block {
+		margin: 10px;
+		width: 95%!important;
+	}
+
+	.product-block:hover .colorbox.product-zoom {
+		bottom: 35%;
+	}
+
+	.product-block:hover .compare a {
+		right: 38%;
+	}
+	.product-block:hover .wishlist a {
+		left: 38%;
+	}
+	.product-block .compare a, .product-block .wishlist a {
+		top: 37%;
+	}
+	.product-block:hover .cart {
+		top: 29%;
+	}
+	
+}
+ @media only screen and (min-width: 480px) and (max-width: 599px) {
+}
+@media only screen and (max-width: 480px){
+	.pav-categoryproducts .tab-nav ul li a {
+		font-size: 11px;
+		padding: 0 5px;
+		text-transform: none;
+	}
+
+	.product-block:hover .colorbox.product-zoom {
+		bottom: 29%;
+	}
+
+	.product-block:hover .compare a {
+		right: 29%;
+	}
+	.product-block:hover .wishlist a {
+		left: 29%;
+	}
+	.product-block .compare a, .product-block .wishlist a {
+		top: 31%;
+	}
+	.product-block:hover .cart {
+		top: 21%;
+	}
+}
+@media only screen and (max-width: 380px){
+	#headertop .login-content {
+	 width: 255px;
+	 }
+	 .pav-categoryproducts .carousel-controls {
+		top: -23px;
+	}
+
+	.show-mobile .quick-access .inner-toggle,
+	.show-mobile .quick-user  .inner-toggle,
+	#search_mobile .inner-toggle {
+		right: -55px
+	}
+}
+/* Iphone 4 landscape */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+
+}
+
+
+/* Iphone 4 + 5 Portrait */
+@media only screen and (min-width: 240px) and (max-width: 320px) {
+	
+}
+}

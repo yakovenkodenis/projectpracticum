@@ -1,0 +1,13 @@
+#header .header-right{
+	float:left;
+	 text-align: left;
+}
+
+#mainmenu .navbar .nav{ float: right; }
+
+.pavcontentslider .carousel-indicators 	{ right: 0 	}
+.productcarousel .carousel-controls { right: auto; left: 10px }
+
+ul.box-category li.haschild{
+	 background-position: 5% 12px
+}

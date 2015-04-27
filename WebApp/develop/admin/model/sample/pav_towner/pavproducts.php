@@ -1,0 +1,2 @@
+a:1:{i:1;a:13:{s:11:"description";a:2:{i:1;s:37:"&lt;p&gt;dsgafgfshgfbhsgf&lt;/p&gt;
+";i:3;s:0:"";}s:5:"width";s:3:"400";s:6:"height";s:3:"500";s:12:"itemsperpage";s:1:"4";s:4:"cols";s:1:"4";s:5:"limit";s:2:"12";s:9:"layout_id";s:1:"1";s:8:"position";s:8:"showcase";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"2";s:13:"category_tabs";a:5:{i:0;s:2:"17";i:1;s:2:"33";i:2;s:2:"34";i:3;s:2:"61";i:4;s:2:"40";}s:5:"image";a:5:{i:0;s:0:"";i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";i:4;s:0:"";}s:5:"class";a:5:{i:0;s:0:"";i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";i:4;s:0:"";}}}

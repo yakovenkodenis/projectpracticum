@@ -1,0 +1,318 @@
+.theme-skins .theme-skin{
+	width:60px;
+	height:60px;
+	float:left;
+	overflow:hidden;
+	padding:12px;
+}
+.clear{
+	clear:both;
+
+}
+
+
+.theme-layout {
+	width:65%;
+	position:relative;
+}
+.theme-layout div{ position:relative;}
+.theme-layout > div{
+	position:relative;
+	clear:both;
+	min-height:60px;
+	background:#f4f4f4;
+	margin-bottom:10px;
+	border:solid #CCC 1px;
+}
+.theme-layout .pos{
+	position:absolute;
+	top:0px;
+	left:0px;
+	background:#FFF;
+	padding:6px 10px;
+	font-weight:bold;
+	font-size:11px;
+}
+
+.theme-layout .columns {
+	min-height:500px
+}
+.columns .column-center{
+	width:52%;
+	float:left;
+	margin:0 9px;
+}
+.columns .column-right{
+	 width:22%;
+	 float:left;
+}
+.columns .column-left{
+	float:left;
+	width:23%
+}
+ .columns > div{
+ 	min-height:500px;background:#CCC;
+	position:relative;
+ }
+   .column-center .content-top{
+	min-height:50px;
+   }
+  .column-center .content-bottom{
+
+	margin-top:300px;
+	min-height:50px;
+  }
+ 
+.layout-footer > div{
+	min-height:60px;
+	margin:8px 6px;
+	position:relative;
+	background:#CCC
+}
+.placeholder{
+	background:#FFFFBB;
+	padding:8px 12px;
+}
+.holdposition{
+		width:28%;
+		float:left;
+		min-height:600px;
+		background:#e1e1e1;
+		padding-top:24px;
+		margin-top:14px
+	}
+.module-pos {
+	max-width:158px;
+	height:auto;
+	padding:8px 12px;
+	background:#FFF;
+	border:solid 1px #CCC;
+	cursor:hand; cursor:pointer;
+	margin:3px 10px;
+}
+.mod-disable {
+	background:#FFD1D1;
+	color:#555555
+}
+.module-pos  em, .module-pos i{
+	font-weight:normal;
+	font-size:10px;
+	margin-left:6px;
+}
+.explain{
+	font-size:11px;
+	position:absolute;color:#666;
+	top:-10px;
+	left:0;
+	padding:12px;
+	text-align:right;
+}
+.edit-container{
+	padding-top:30px;
+	padding-bottom:20px
+}
+
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+.hide{
+	display:none
+}
+.show{
+	display:block
+}
+#ajaxloading{
+	position:fixed;
+	top:0;
+	right:0;
+	width:100%;
+	z-index:1200
+}
+#ajaxloading > div{
+	margin:12px;
+}	
+
+.pavo-copyright, i{
+	font-size:11px;
+}
+.highlight{
+	background:#fcfcfc
+}
+
+.box-patterns div{
+	display:block ;
+	width:38px;
+	height:38px;
+	float:left;
+	cursor:hand;
+	cursor:pointer;
+	border:solid 1px #f3f3f3;
+	margin:6px;
+}
+.box-patterns div.active{
+	border:solid 1px red
+}
+
+/***/
+
+#themepanel  > .heading h1 {
+	color:#000000;
+}
+#themepanel > .heading {
+   /* Fallback Color */
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e8e8e8));
+        /* Saf4+, Chrome */
+        background-image: -webkit-linear-gradient(top, #fcfcfc, #e8e8e8);
+        /* Chrome 10+, Saf5.1+, iOS 5+ */
+        background-image: -moz-linear-gradient(top, #fcfcfc, #e8e8e8);
+        /* FF3.6 */
+        background-image: -ms-linear-gradient(top, #fcfcfc, #e8e8e8);
+        /* IE10 */
+        background-image: -o-linear-gradient(top, #fcfcfc, #e8e8e8);
+        /* Opera 11.10+ */
+        background-image: linear-gradient(top, #fcfcfc, #e8e8e8);
+    border: 1px solid #DBDBDB;
+    border-radius: 5px 4px 4px 4px;
+    height: 38px;
+    padding: 12px;
+}
+#themepanel   > .content {	
+	border:none; 
+	padding:0; 
+}
+
+#themepanel .htabs {
+	margin-bottom:0;
+	zoom:1;
+	/* Fallback Color */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e8e8e8));
+	/* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #fcfcfc, #e8e8e8);
+	/* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image: -moz-linear-gradient(top, #fcfcfc, #e8e8e8);
+	/* FF3.6 */
+	background-image: -ms-linear-gradient(top, #fcfcfc, #e8e8e8);
+	/* IE10 */
+	background-image: -o-linear-gradient(top, #fcfcfc, #e8e8e8);
+	/* Opera 11.10+ */
+	background-image: linear-gradient(top, #fcfcfc, #e8e8e8);
+	text-shadow:0 1px #FFF;
+	border-bottom:1px solid #CDCDCD;
+	color:#636363;
+	font-weight:600; height: 38px;
+    line-height: 25px;
+
+}
+#themepanel .htabs a {
+	 border-left:0;
+	 margin-right:0;
+	 background:none; 
+	 font-size:12px; 
+	border-top:0;
+	 
+}
+#themepanel .htabs a.selected{
+	color:#797979;
+	background:#f9f9f9;
+	box-shadow:0 -1px 0 #eaeaea inset;
+
+}
+
+#themepanel  .ibox {
+
+    border: 1px solid #CDCDCD;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 2px 2px -2px #CCCCCC;
+    margin-bottom: 20px;
+}
+#themepanel  .ibox  #tab-contents{
+	padding:12px; 
+}
+
+
+
+.form  tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #FAFAFA; }
+
+  
+  #themepanel    .button{
+	 color: white;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 4px 17px;
+    font-size: 12px;
+    font-weight: bold;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #e8481b;
+    background: #ed6d49;
+  }
+ #themepanel  .btn-save{
+   color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #0c9abb;
+  /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#0daed3), to(#0c9abb));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #0daed3, #0c9abb);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(top, #0daed3, #0c9abb);
+  /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #0daed3, #0c9abb);
+  /* IE10 */
+  background-image: -o-linear-gradient(top, #0daed3, #0c9abb);
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, #0daed3, #0c9abb);
+  border-color: #0daed3 #0daed3 #0c9abb;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
+  .btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
+    color: white;
+    background-color: #0c9abb;
+    *background-color: #0c9abb; }
+  .btn-info:active, .btn-info.active {
+    background-color: #0daed3 \9;
+  }
+  
+ .entry-theme{
+	padding:20px 0;
+ }
+ .entry-theme a.green {
+ 	color: #0DAED3;
+ 	font-weight: bold;
+ 	text-decoration: none;
+ }
+
+ .label {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; }
+ .label, .badge{ 
+  background-color: #0DAED3;
+    color: white;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 2px 4px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.page-tabs-wrap {
+    float: left;
+    min-width: 70%
+}

@@ -1,0 +1,6 @@
+.newsletter_block{
+    margin: 10px 0;
+}
+.newsletter_block .description{
+    display: none;
+}

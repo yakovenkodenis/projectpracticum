@@ -1,0 +1,87 @@
+.pav-categoryproducts {
+	overflow:  hidden;
+	position: relative;
+}
+.pav-categoryproducts .tab-content {
+	padding:  0;
+	margin: 0;
+	background: none;
+	border: none;
+	position: relative;
+}
+.pav-categoryproducts .carousel-inner .item {
+	 padding:  0;
+}
+.pav-categoryproducts .carousel-control{
+	z-index:10
+}
+.pav-categoryproducts .tab-nav {
+	position: relative;
+	line-height: 45px;
+	height: 45px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.pav-categoryproducts .tab-nav ul li.active a:before {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 7px solid #63B4C6;
+    bottom: -7px;
+    content: "";
+    display: inline-block;
+    left: 44%;
+    position: absolute;
+}
+.pav-categoryproducts .tab-nav ul li.active a:after {
+    border-bottom: 1px solid #63B4C6;
+    bottom: -16px;
+    content: "";
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+.pav-categoryproducts .tab-nav ul li.active a {
+    background: none repeat scroll 0 0 #63B4C6;
+    color: #FFFFFF;
+}
+.pav-categoryproducts .tab-nav ul li a {
+    border-radius: 4px 4px 4px 4px;
+    color: #454545;
+    float: left;
+    font-family: "Segoe UI Semibold",arial;
+    font-size: 16px;
+    line-height: 30px;
+    margin-right: 1px;
+    padding: 0 15px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.pav-categoryproducts .tab-content {
+	border-top: 1px solid #ffffff;
+    overflow: inherit;
+}
+
+.pav-categoryproducts .carousel-controls {
+    position: absolute;
+    right: -15px;
+    top: -35px;
+    width: 90px;
+    z-index: 10;
+}
+.pav-categoryproducts .carousel-control {
+    background-color: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 3px 3px 3px 3px;
+    color: #C7C7C7;
+    display: block;
+    font-size: 28px;
+    height: 20px;
+    line-height: 15px;
+    margin: 0 1px;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    width: 23px;
+}
