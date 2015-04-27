@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="5aca5479-622a-45f6-bb1e-84c391e80b18" name="UML Use-Case Diagram for Instructors" linkedPackageId="dadc00ce-074b-48c0-bb62-985e84c8da28" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="e471add8-9cba-4166-af29-48ef8ad912bf">
+      <elementDefinition Id="e10d55ee-dc0a-434f-8b6b-c9aa84317a88" />
+      <body>In order to have an up-to-date schedule, a user should update the schedule periodically</body>
+      <annotatedElements>
+        <useCaseMoniker Id="e51267d1-731b-466e-b1f3-b07f6d00f903" LastKnownName="Update schedule" />
+      </annotatedElements>
+    </comment>
+    <comment Id="b6bca359-c885-4ff8-a306-252db6c6f24d">
+      <elementDefinition Id="b64ecebf-2f84-4a9e-9256-7e7f3ecdb0e7" />
+      <body>An autoschool gives
+a fixed timetable for an acamedic year</body>
+      <annotatedElements>
+        <useCaseMoniker Id="58f39bbb-8f68-4839-a200-48940f8448e6" LastKnownName="Make a practice timetable" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="b07a767c-f5ca-472a-9726-5049dfe416aa" name="Autoschool (administrator)" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e0ef12a3-ea82-470b-b532-2e0cce546619" />
+        <generalsInternal>
+          <generalization Id="67a5eacb-94df-44e6-aba6-2a15a5b92189" isSubstitutable="false">
+            <actorMoniker Id="ccae14d4-0f37-4d83-9d06-3d22f1c154d4" LastKnownName="Instructor" />
+            <elementDefinition Id="5e9b26ce-a070-4e35-ae72-f5cb5d7008b2" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="373946ef-543e-465d-bf0d-226726f13b90" isDerived="false" sourceEndRoleName="Autoschool (administrator)" targetEndRoleName="Make a schedule" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="402b1e68-9729-4db1-bac9-ea7f54d63806" LastKnownName="Make a schedule" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2ad2f447-1daa-44c3-b94f-eeea5787ba16" name="Autoschool (administrator)" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="70af2641-3f4d-4bf4-ab16-2d1214ac24db" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="55b26741-370f-4608-82bc-2f6c95777561" name="Make a schedule" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="048e885f-7ccf-42cb-8021-17f08055c8ad" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5a7592b4-6d3e-4a34-bfbb-c4205ed2dadf" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="402b1e68-9729-4db1-bac9-ea7f54d63806" name="Make a schedule" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d1edcdc1-32df-4f37-b9c7-2a2bdeea779e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e6190dba-acba-4fd8-8e7c-10ab932a54ab" name="Make a lectures schedule" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="44b98c0e-b4a9-4b8b-b794-fb973e38af7d" />
+        <generalsInternal>
+          <generalization Id="3f1c699c-8198-441c-ad14-86a684c482ff" isSubstitutable="false">
+            <useCaseMoniker Id="402b1e68-9729-4db1-bac9-ea7f54d63806" LastKnownName="Make a schedule" />
+            <elementDefinition Id="5f30e012-af14-42c8-82d1-607d3854a4c7" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="58f39bbb-8f68-4839-a200-48940f8448e6" name="Make a practice timetable" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bb32ab80-5900-4f08-b2d5-264ed606bee7" />
+        <generalsInternal>
+          <generalization Id="1f6c11b5-8e1d-4d1f-a49f-4dc8e3f3d4bc" isSubstitutable="false">
+            <useCaseMoniker Id="402b1e68-9729-4db1-bac9-ea7f54d63806" LastKnownName="Make a schedule" />
+            <elementDefinition Id="3777e612-4c01-41d4-9629-e013c1f0e204" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="ccae14d4-0f37-4d83-9d06-3d22f1c154d4" name="Instructor" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="63ea0a65-6633-4ebc-a34d-78a0c0f6698f" />
+        <targetEnds>
+          <association Id="6ccfec9c-aa72-4c7b-9415-3754b024f2d6" isDerived="false" sourceEndRoleName="Instructor" targetEndRoleName="Check schedule" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dfff8b04-fa73-471c-98c5-402775508d6f" LastKnownName="Check schedule" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="39f91e68-5596-4635-a36f-825466cc2009" name="Instructor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="64a4fee1-cf04-41be-96ef-2dd100a533b7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a1e67d15-629e-4847-a75b-7983d9079e6c" name="Check schedule" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a8dd6e7e-56b3-4754-991f-f50ba9e82559" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="55b0a6ba-14d0-4f1b-a9d8-72e7bb568094" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dfff8b04-fa73-471c-98c5-402775508d6f" name="Check schedule" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0f3429fd-3268-4b9f-bf8a-d954447a3bbd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e51267d1-731b-466e-b1f3-b07f6d00f903" name="Update schedule" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f0351ecc-5660-4b93-8cb0-83d4a31b153c" />
+        <suppliersInternal>
+          <dependency Id="61f5da49-f126-4504-ba9f-f8bffee0b752">
+            <useCaseMoniker Id="dfff8b04-fa73-471c-98c5-402775508d6f" LastKnownName="Check schedule" />
+            <elementDefinition Id="afd8f713-19cd-4068-934a-b7938dd91be0" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="dadc00ce-074b-48c0-bb62-985e84c8da28" name="autoschool_use_cases">
+    <elementDefinition Id="c80fb6a1-30b0-4342-834e-7aee4f548aa2" />
+    <profileInstances>
+      <packageHasProfileInstances Id="1fdaebb3-33c4-419a-ae02-359945e6b040">
+        <profileInstance Id="a730048f-2f5e-4ddf-a99a-374c543bb90c" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a3caccb2-e35e-4fde-a178-1aeecdc64d98">
+        <profileInstance Id="bca7a189-4875-463b-9bda-2ff6fe5514ad" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

@@ -1,0 +1,1832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="c80fb6a1-30b0-4342-834e-7aee4f548aa2"
+  name="autoschool_use_cases" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="e10d55ee-dc0a-434f-8b6b-c9aa84317a88">
+      <body>In order to have an up-to-date schedule, a user should update the schedule periodically</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="f0351ecc-5660-4b93-8cb0-83d4a31b153c"
+          LastKnownName="Update schedule"
+          LastKnownLocation="autoschool_use_cases.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="b64ecebf-2f84-4a9e-9256-7e7f3ecdb0e7">
+      <body>An autoschool gives
+a fixed timetable for an acamedic year</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="bb32ab80-5900-4f08-b2d5-264ed606bee7"
+          LastKnownName="Make a practice timetable"
+          LastKnownLocation="autoschool_use_cases.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="136335da-033f-4934-95d8-ed0be3f3489c"
+        name="Student"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="e4325b5b-2faf-4146-9c7e-37f6961f7e3c"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="23c7de50-2f86-4b90-ae8d-d1fdd2f8200f"
+              LastKnownName="logged in user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="1db9d847-948c-4a7c-86c0-c51ceae2230c"
+            isDerived="false"
+            sourceEndRoleName="Student"
+            targetEndRoleName="Check lectures schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6f0bddab-c202-4645-8f03-9cf353b76346"
+              LastKnownName="Check lectures schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cc7d9b0e-6ec2-4491-b34a-fc1d44e872a9"
+                  name="Student"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="44a40638-f1d2-4662-a54d-4e18c496d855"
+                  name="Check lectures schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="dcf1f820-a57f-4a17-981f-40b80f530c8e"
+            isDerived="false"
+            sourceEndRoleName="Student"
+            targetEndRoleName="Check practice schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1a2b1528-1d6e-46ce-8029-5f02f01ba185"
+              LastKnownName="Check practice schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="932378df-1cc4-404c-abaa-8e1ca4d62ef8"
+                  name="Student"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bad1f6be-a98a-4ffa-8f01-0d189c884d80"
+                  name="Check practice schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6b448561-8952-415e-8b88-d5c39b9a2fa1"
+            isDerived="false"
+            sourceEndRoleName="Student"
+            targetEndRoleName="Book practice lesson"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d324c35e-ded4-4011-b46b-76a801801fbb"
+              LastKnownName="Book a practice lesson"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d0ef5b26-5efb-4799-8682-f63675100a7f"
+                  name="Student"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f89b0d99-f105-4fa6-a8f5-fffbd7e4fe24"
+                  name="Book practice lesson"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5e916014-6886-450d-aa3d-805fba4a9b79"
+            isDerived="false"
+            sourceEndRoleName="Student"
+            targetEndRoleName="Check schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3d6099eb-4164-4571-ad4e-bf1a0213389c"
+              LastKnownName="Check schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="11a141ca-22b3-48de-943e-2aaa0f44d292"
+                  name="Student"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0278c293-6662-40d3-bdbd-d1b846413a20"
+                  name="Check schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="60118cd1-4c58-4962-b608-290170ea86bb"
+        name="Instructor"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6f0bddab-c202-4645-8f03-9cf353b76346"
+        name="Check lectures schedule"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1a2b1528-1d6e-46ce-8029-5f02f01ba185"
+        name="Check practice schedule"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d324c35e-ded4-4011-b46b-76a801801fbb"
+        name="Book a practice lesson"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="c8cbc2c2-4967-4c3b-9502-73bf7840269d">
+            <useCaseMoniker
+              Id="7dc849af-1226-4248-b27e-59b06d1bcc6a"
+              LastKnownName="Get schedule list from database"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9f2f0937-6b11-49cd-84cd-aa107ba2309d"
+        name="login"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="36cb1169-e6c8-4b16-a48c-deb84c39fbab">
+            <useCaseMoniker
+              Id="d0f93e9e-e398-46ab-aa78-32893c8e9272"
+              LastKnownName="get info about a user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bdf6b601-084f-4458-9344-6b3c55b7e646"
+        name="Register"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="1e244e6a-436a-4fea-bb4a-95e21d7c8a59">
+            <useCaseMoniker
+              Id="d0f93e9e-e398-46ab-aa78-32893c8e9272"
+              LastKnownName="get info about a user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3d6099eb-4164-4571-ad4e-bf1a0213389c"
+        name="Check schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="bca8b1bc-a9b0-4564-ba28-b34f7706c5db">
+            <useCaseMoniker
+              Id="421584ea-d2c3-4673-b76a-a12d4d6b3b23"
+              LastKnownName="Check practice schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+          <extend
+            Id="2410d01a-a3ca-4b34-ad46-b14b6c32060b">
+            <useCaseMoniker
+              Id="0b260ff1-bd65-42c3-8d54-a53fd00c3df2"
+              LastKnownName="Check lectures schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="479e9a8f-5b30-47bb-b849-3268ce9a8ef8">
+            <useCaseMoniker
+              Id="7dc849af-1226-4248-b27e-59b06d1bcc6a"
+              LastKnownName="Get schedule list from database"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="421584ea-d2c3-4673-b76a-a12d4d6b3b23"
+        name="Check practice schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0b260ff1-bd65-42c3-8d54-a53fd00c3df2"
+        name="Check lectures schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fb515386-f1ca-4c1a-852b-360b439307f4"
+        name="Update schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="078483a7-4011-43cc-8872-2e944d477600">
+            <useCaseMoniker
+              Id="3d6099eb-4164-4571-ad4e-bf1a0213389c"
+              LastKnownName="Check schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="bf13e5db-0fd8-48ff-aa38-760bdb78e4e6"
+        name="Autoschool (administrator)"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="8497efed-107a-4733-b005-d68ce8bbd5c5"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="23c7de50-2f86-4b90-ae8d-d1fdd2f8200f"
+              LastKnownName="logged in user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="fc750b7d-35c4-464e-a2b4-76b5b164e842"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Make a schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="402bbb64-37e3-4eb0-b0c3-d2cdf37cb399"
+              LastKnownName="Make a schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d0807658-15de-42f1-b4a0-07009a34967b"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="353002a0-a6c5-47d2-9fc6-7bc74f410309"
+                  name="Make a schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e0d22883-1f59-4363-8c63-2d1a462c2acf"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Give a driving license"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="370c8ff7-b747-4457-811a-25f66e9858cc"
+              LastKnownName="Give an exam date"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e54d43a5-dd67-4a2a-9113-8abd66329d35"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bc369420-9630-4934-8cb9-c76a70cd8fde"
+                  name="Give a driving license"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c56bc2ee-17c1-4db4-a425-d3ec7ddcc768"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Give certificate about finishinh the course"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7020600c-bf98-4151-87f3-32c82d78cb42"
+              LastKnownName="Give certificate about successful finishing the course"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f5a3743a-780f-41be-9af7-5d18056c3de2"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="07120fbb-7364-41df-9478-2964981ea4ff"
+                  name="Give certificate about finishinh the course"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="cfe2ca17-f1a7-4482-85cd-0768f54970a3"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Edit autoschool info"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="bdefe780-ea8d-4daf-ba90-d6faf37603a8"
+              LastKnownName="Edit autoschool info"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6e9fdcbb-c6b3-43bf-a7b0-08ff9b09d96b"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="20df556c-ee22-4913-be4a-643cb65189d7"
+                  name="Edit autoschool info"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e46fbc8b-24d2-4c1e-a9c4-efb1d05fc17f"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Check schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3d6099eb-4164-4571-ad4e-bf1a0213389c"
+              LastKnownName="Check schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8218238b-b9aa-42f9-9415-0927bfda06d8"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="479d3365-91a9-4ef0-aaab-4b347ba9c085"
+                  name="Check schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="402bbb64-37e3-4eb0-b0c3-d2cdf37cb399"
+        name="Make a schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="e87ddeac-5129-4cd2-8a01-8f2029456c78">
+            <useCaseMoniker
+              Id="1c96f26c-8a60-42ed-9140-77b88afdf954"
+              LastKnownName="Make a lectures schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+          <extend
+            Id="a1147827-f08c-4f42-8785-0a9235032259">
+            <useCaseMoniker
+              Id="bc7b1649-528c-46ea-a5e7-9e672285a87c"
+              LastKnownName="Make a practice timetable"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="fdb39580-9acf-4919-af7e-9b0ea5c10cd0">
+            <useCaseMoniker
+              Id="7dc849af-1226-4248-b27e-59b06d1bcc6a"
+              LastKnownName="Get schedule list from database"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1c96f26c-8a60-42ed-9140-77b88afdf954"
+        name="Make a lectures schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bc7b1649-528c-46ea-a5e7-9e672285a87c"
+        name="Make a practice timetable"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="e0ef12a3-ea82-470b-b532-2e0cce546619"
+        name="Autoschool (administrator)"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="5e9b26ce-a070-4e35-ae72-f5cb5d7008b2"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="63ea0a65-6633-4ebc-a34d-78a0c0f6698f"
+              LastKnownName="Instructor"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="5a7592b4-6d3e-4a34-bfbb-c4205ed2dadf"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Make a schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d1edcdc1-32df-4f37-b9c7-2a2bdeea779e"
+              LastKnownName="Make a schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="70af2641-3f4d-4bf4-ab16-2d1214ac24db"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="048e885f-7ccf-42cb-8021-17f08055c8ad"
+                  name="Make a schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9522e67d-61b8-4a01-9aba-618bc5162bd4"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Give a driving license"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="964a289b-b913-44fd-9988-6760ba55bf73"
+              LastKnownName="Give a driving license"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b537ac74-421b-408c-8b67-99e764d9ce0d"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="28fa95f6-c377-44d2-a65a-9950761dd47e"
+                  name="Give a driving license"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d1edcdc1-32df-4f37-b9c7-2a2bdeea779e"
+        name="Make a schedule"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="44b98c0e-b4a9-4b8b-b794-fb973e38af7d"
+        name="Make a lectures schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="5f30e012-af14-42c8-82d1-607d3854a4c7"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="d1edcdc1-32df-4f37-b9c7-2a2bdeea779e"
+              LastKnownName="Make a schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bb32ab80-5900-4f08-b2d5-264ed606bee7"
+        name="Make a practice timetable"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="3777e612-4c01-41d4-9629-e013c1f0e204"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="d1edcdc1-32df-4f37-b9c7-2a2bdeea779e"
+              LastKnownName="Make a schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="63ea0a65-6633-4ebc-a34d-78a0c0f6698f"
+        name="Instructor"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="55b0a6ba-14d0-4f1b-a9d8-72e7bb568094"
+            isDerived="false"
+            sourceEndRoleName="Instructor"
+            targetEndRoleName="Check schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0f3429fd-3268-4b9f-bf8a-d954447a3bbd"
+              LastKnownName="Check schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="64a4fee1-cf04-41be-96ef-2dd100a533b7"
+                  name="Instructor"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a8dd6e7e-56b3-4754-991f-f50ba9e82559"
+                  name="Check schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0f3429fd-3268-4b9f-bf8a-d954447a3bbd"
+        name="Check schedule"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f0351ecc-5660-4b93-8cb0-83d4a31b153c"
+        name="Update schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="afd8f713-19cd-4068-934a-b7938dd91be0">
+            <useCaseMoniker
+              Id="0f3429fd-3268-4b9f-bf8a-d954447a3bbd"
+              LastKnownName="Check schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="964a289b-b913-44fd-9988-6760ba55bf73"
+        name="Give a driving license"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="370c8ff7-b747-4457-811a-25f66e9858cc"
+        name="Give an exam date"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="81db164b-ab74-4a29-a9b7-97a99cea6e1a">
+            <useCaseMoniker
+              Id="31eee1ef-404c-4458-9791-1a87c5dfbad3"
+              LastKnownName="Give a driving license"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7020600c-bf98-4151-87f3-32c82d78cb42"
+        name="Give certificate about successful finishing the course"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="fe51b2cb-f356-404d-ae25-557ce289c12a">
+            <useCaseMoniker
+              Id="31eee1ef-404c-4458-9791-1a87c5dfbad3"
+              LastKnownName="Give a driving license"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="31eee1ef-404c-4458-9791-1a87c5dfbad3"
+        name="Give a driving license"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="05e50d22-7cef-4581-9c1f-8ebcb4758ecb"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="28d7eedc-dbf8-40ee-9f52-37c710841f0c"
+        name="Autoschool (administrator)1"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="253a835e-f10d-486f-b1a4-0966e1680c1d"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Make a schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4fb0d9f8-c062-47fd-8615-d6e745bcba94"
+              LastKnownName="Make a schedule1"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="15dcbdd8-a5e2-4c84-a15c-ff78f6d70b36"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a3e71f29-19a7-4caf-a220-3355941fdde1"
+                  name="Make a schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4fb0d9f8-c062-47fd-8615-d6e745bcba94"
+        name="Make a schedule1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e2d1f72b-7d3e-4a90-869b-977aa0ddca4e"
+        name="Make a lectures schedule1"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="09de6841-0bee-4874-8961-a1445a8de0e4"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="4fb0d9f8-c062-47fd-8615-d6e745bcba94"
+              LastKnownName="Make a schedule1"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a0463629-1478-46ef-9515-dfd50065778d"
+        name="Make a practice timetable1"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="466dda84-0e32-489a-a51b-287f52f01d44"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="4fb0d9f8-c062-47fd-8615-d6e745bcba94"
+              LastKnownName="Make a schedule1"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="304533a7-0f91-4848-943e-d2b06d109077"
+        name="Check schedule1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4b63dc8a-ce0e-4906-bbee-0a66fbffb2c0"
+        name="Update schedule1"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="94b14b34-1711-45e8-b03a-aec278050111">
+            <useCaseMoniker
+              Id="304533a7-0f91-4848-943e-d2b06d109077"
+              LastKnownName="Check schedule1"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="4dd066a5-4405-4849-bdea-026a6ad6b42d"
+        name="Autoschool (administrator)2"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="0a963591-952e-4c1f-a464-51c69a317242"
+            isDerived="false"
+            sourceEndRoleName="Autoschool (administrator)"
+            targetEndRoleName="Make a schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="07e2647b-2fb2-42fa-9f3a-337a1e318b95"
+              LastKnownName="Make a schedule2"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e264239b-f046-4d9c-aa43-9f1ede5116d0"
+                  name="Autoschool (administrator)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9a50e72a-74f1-4812-a309-a4dcf9431943"
+                  name="Make a schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="07e2647b-2fb2-42fa-9f3a-337a1e318b95"
+        name="Make a schedule2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a9a25005-dffe-4dd5-9eb5-bec5840b2775"
+        name="Make a lectures schedule2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4c36c1e2-db8a-4d47-8fad-8a0d57162ceb"
+        name="Make a practice timetable2"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="030cab3b-4a7b-4ea1-b3d3-899a38078738"
+            isSubstitutable="false">
+            <useCaseMoniker
+              Id="07e2647b-2fb2-42fa-9f3a-337a1e318b95"
+              LastKnownName="Make a schedule2"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="f97ce7b9-0fa5-4a69-9d9e-337e5438398f"
+        name="Instructor"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="0b0ed0c5-052f-4318-941e-e7be511cdfb7"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="23c7de50-2f86-4b90-ae8d-d1fdd2f8200f"
+              LastKnownName="logged in user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="b3be0b9b-4482-48cd-83c5-e70aef18245c"
+            isDerived="false"
+            sourceEndRoleName="Instructor"
+            targetEndRoleName="Check schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="53f2149a-f3ea-416d-b0cc-8fc8151c365d"
+              LastKnownName="Check schedule2"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fdebf08f-dcd9-4d30-bcda-c0b948db4943"
+                  name="Instructor"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d3b1f4f0-225c-477b-9a0d-ce1ac249d499"
+                  name="Check schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0e3854eb-5b7b-4614-b91c-532b3874a528"
+            isDerived="false"
+            sourceEndRoleName="Instructor1"
+            targetEndRoleName="Check schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3d6099eb-4164-4571-ad4e-bf1a0213389c"
+              LastKnownName="Check schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ba1dd260-6d57-4a2d-81d0-cce597091514"
+                  name="Instructor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5ef0cc77-dbf0-4a75-90e7-d68a88da83b0"
+                  name="Check schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="53f2149a-f3ea-416d-b0cc-8fc8151c365d"
+        name="Check schedule2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4684e444-7ba3-49a8-992c-0a40bdfd3339"
+        name="Update schedule2"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="a42fd498-3495-4f32-b1b9-6b559b0ef2fe">
+            <useCaseMoniker
+              Id="53f2149a-f3ea-416d-b0cc-8fc8151c365d"
+              LastKnownName="Check schedule2"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="b6224223-3bac-4aeb-94f4-3f05999bcec1"
+        name="Web user"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="0e564258-f201-4a87-9386-6daef0d38d4c"
+            isDerived="false"
+            sourceEndRoleName="Web user"
+            targetEndRoleName="Look through autoschools info"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="33ab5495-2ec2-4859-b79b-1481402c98b6"
+              LastKnownName="Look through autoschools info"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a992ffc9-fc1f-474b-9c77-29a0f0f8d8d5"
+                  name="Web user"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8aaa1796-3138-46d9-87cc-e0e02e3784c3"
+                  name="Look through autoschools info"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="bd0ecd75-a0d9-40ee-963c-11c26a80c0e2"
+        name="unlogged user"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="cff65bd5-8eb1-4919-807a-25d5566ad278"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="b6224223-3bac-4aeb-94f4-3f05999bcec1"
+              LastKnownName="Web user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="29aee763-724b-445e-bd8d-ea1970d3b011"
+            isDerived="false"
+            sourceEndRoleName="Guest"
+            targetEndRoleName="Register"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="bdf6b601-084f-4458-9344-6b3c55b7e646"
+              LastKnownName="Register"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ac2efabd-5302-4906-9f97-72f235310f7e"
+                  name="Guest"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8714f099-a8ed-4d0f-beeb-2eb1ba00007f"
+                  name="Register"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="86628394-f7b2-4d67-a0f2-e226a986a185"
+            isDerived="false"
+            sourceEndRoleName="unlogged user"
+            targetEndRoleName="login"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="9f2f0937-6b11-49cd-84cd-aa107ba2309d"
+              LastKnownName="login"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c12427d7-7626-411e-a3a0-0dba643d3211"
+                  name="unlogged user"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="380b5b74-1f22-42a1-a70a-74f48b70eeff"
+                  name="login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="23c7de50-2f86-4b90-ae8d-d1fdd2f8200f"
+        name="logged in user"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="4140a4c5-3d38-4121-88aa-55efe9f00c3c"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="b6224223-3bac-4aeb-94f4-3f05999bcec1"
+              LastKnownName="Web user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="d6578557-3515-4e61-a864-e4a8fe90077f"
+            isDerived="false"
+            sourceEndRoleName="Registered user"
+            targetEndRoleName="login"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b6fa8770-2c4d-4e7d-8bf3-2bf1b3ccefc4"
+              LastKnownName="login"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="93c2d3f8-68be-4d47-9605-5e437708ba29"
+                  name="Registered user"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b4a22cd7-a650-425f-88d0-413fd4bbbdcc"
+                  name="login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="012dbe1a-8635-4b5e-9e08-e7aa81ec50b1"
+            isDerived="false"
+            sourceEndRoleName="Registered user"
+            targetEndRoleName="Get schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="81f36722-cf97-4ae1-966b-8c6eab2ae8e4"
+              LastKnownName="Get schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4aa8647b-6672-453d-9d4c-cc6f5f10e041"
+                  name="Registered user"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f85d357e-53c7-4aff-ba29-f627883dac81"
+                  name="Get schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a3302810-a7f6-428d-a14e-2b232f671cf2"
+            isDerived="false"
+            sourceEndRoleName="logged in user"
+            targetEndRoleName="Log out"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="e2a1ac22-2521-451f-9e21-70896ae9b0e3"
+              LastKnownName="Log out"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="126dc002-7252-4dbe-8378-dae6570f7aa3"
+                  name="logged in user"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6f44aab2-b85e-4498-b1ab-d46c7c4d5157"
+                  name="Log out"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="33ab5495-2ec2-4859-b79b-1481402c98b6"
+        name="Look through autoschools info"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="23e61c9a-137d-423a-b328-0588adb12d1f">
+            <useCaseMoniker
+              Id="0d7c143d-1bb7-4835-a781-43645b765f19"
+              LastKnownName="Get autoschools info from database"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bdefe780-ea8d-4daf-ba90-d6faf37603a8"
+        name="Edit autoschool info"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="35e92005-f482-4270-9e1a-44ebf8b7f6e9">
+            <useCaseMoniker
+              Id="0d7c143d-1bb7-4835-a781-43645b765f19"
+              LastKnownName="Get autoschools info from database"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6ac78aa2-435c-4ed2-acfd-7a4700195dd8"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+        name="Web system"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="15344c8b-d6f1-44db-a5ff-44ed3561d972"
+        name="Application"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7dc849af-1226-4248-b27e-59b06d1bcc6a"
+        name="Get schedule list from database"
+        isAbstract="true"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="81f36722-cf97-4ae1-966b-8c6eab2ae8e4"
+        name="Get schedule"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="53229e84-d4cc-4248-8262-45e6cba8865c">
+            <useCaseMoniker
+              Id="94e57e05-a966-48e6-82a8-52d01c3adef1"
+              LastKnownName="lectures monitoring"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+          <extend
+            Id="60243dbb-be67-40dd-928c-db78e5d4184e">
+            <useCaseMoniker
+              Id="aa836b8a-679d-470d-b5e1-1628f8be39e9"
+              LastKnownName="practice monitoring"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="c672f68e-df13-4fa4-ab9a-ffa94a809773">
+            <useCaseMoniker
+              Id="7dc849af-1226-4248-b27e-59b06d1bcc6a"
+              LastKnownName="Get schedule list from database"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="94e57e05-a966-48e6-82a8-52d01c3adef1"
+        name="lectures monitoring"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="aa836b8a-679d-470d-b5e1-1628f8be39e9"
+        name="practice monitoring"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d0f93e9e-e398-46ab-aa78-32893c8e9272"
+        name="get info about a user"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b6fa8770-2c4d-4e7d-8bf3-2bf1b3ccefc4"
+        name="login"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="baff5f05-4a99-4542-8002-ffdc4197b1dc">
+            <useCaseMoniker
+              Id="d0f93e9e-e398-46ab-aa78-32893c8e9272"
+              LastKnownName="get info about a user"
+              LastKnownLocation="autoschool_use_cases.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0d7c143d-1bb7-4835-a781-43645b765f19"
+        name="Get autoschools info from database"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="bdd793da-8edd-4efa-881e-c4720a0f0991"
+        name="Application"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="3ce42479-893b-46a8-bdbc-f08e7bcb4ba6"
+            isDerived="false"
+            sourceEndRoleName="Application"
+            targetEndRoleName="login"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="9f2f0937-6b11-49cd-84cd-aa107ba2309d"
+              LastKnownName="login"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="416e7cfd-9379-4cae-87b4-8efde6c26fee"
+                  name="Application"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9dd80684-0092-41c3-b0a5-4cb8dc940b88"
+                  name="login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="552df3f7-2b56-4ac4-bb26-75abe940c4bc"
+            isDerived="false"
+            sourceEndRoleName="Application"
+            targetEndRoleName="Check schedule"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3d6099eb-4164-4571-ad4e-bf1a0213389c"
+              LastKnownName="Check schedule"
+              LastKnownLocation="autoschool_use_cases.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8143e12f-f52e-45e7-81f2-81a75db89d5b"
+                  name="Application"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="59947173-797f-41e4-9c6b-99f742f9dcdb"
+                  name="Check schedule"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e2a1ac22-2521-451f-9e21-70896ae9b0e3"
+        name="Log out"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="2c12040c-7aa8-4ef7-b84b-7679cf99ed50"
+            LastKnownName="Web system"
+            LastKnownLocation="autoschool_use_cases.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
