@@ -1,0 +1,111 @@
+<resources>
+    <string name="app_name">AutoSched</string>
+    <string name="title_section1">Лекции</string>
+    <string name="title_section2">Практические занятия</string>
+    <string name="action_site">Сайт</string>
+    <string name="action_aboutProject">О проекте</string>
+    <string name="action_aboutAuthors">Об авторах</string>
+    <string name="action_help">Помощь</string>
+    <string name="action_contacts">Обратная связь</string>
+    <string name="action_logout">Выйти</string>
+    - <!-- Login Activity strings begin
+  -->
+    <string name="title_activity_login">Вход</string>
+    - <!--  Strings related to login
+  -->
+    <string name="prompt_email">Логин</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in">Войти</string>
+    <string name="action_register">Зарегистрироваться в системе</string>
+    <string name="action_sign_in_short">Войти</string>
+    <string name="error_invalid_email">Ошибка в логине</string>
+    <string name="error_invalid_password">Пароль должен содержать 5 и более символов</string>
+    <string name="error_incorrect_password">Неверный пароль</string>
+    <string name="error_field_required">Пожалуйста, заполните это поле</string>
+    <string name="no_internet_access">Отсутствует подключение к интернету</string>
+    <string name="zero_time">00:00:00</string>
+
+
+    <!--  String for the menu  -->
+    <string name="menu_help">
+              Если вы подозреваете, что отображается неправильное расписание, попробуйте
+        выйти и опять зайти под своим логином и паролем.\n
+            Для того, чтобы забронировать практическое занятие, нажмите на конпку "+" в верхней
+        части меню. Это перебросит вас на сайт, где вы сможете забронировать занятие.\n
+            Если вы уличили приложение в какой-либо некорректной работе, пожалуйста, сообщите об этом одному
+        из разработчиков.
+    </string>
+
+    <string name="about_help">
+            Проект "'Автошкола'" облегчает преподавателям и студентам работу с расписанием и
+        бронированием занятий в автошколах.\n
+       Спасибо, что пользуетесь нашей системой!
+    </string>
+
+    <string name="authors_help">
+        Систему создали разработчики \n Яковенко Денис, \n Савченко Дмитрий.
+    </string>
+
+    <string name="feedback_help">
+        Контакты разработчиков:\n
+        yakovenko.denis.a@gmail.com\n
+        palladis.ua@gmail.com\n
+       Свяжитесь с нами при возникновении любых вопросов!
+    </string>
+
+    <string-array name="titles">
+        <item>Занятие 1.\nНачало в 15:30 сегодня</item>
+        <item>Занятие 2.\nНачало в 15:30 завтра</item>
+        <item>Занятие 3.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 4.\nНачало в 15:30 сегодня</item>
+        <item>Занятие 5.\nНачало в 15:30 завтра</item>
+        <item>Занятие 6.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 7.\nНачало в 15:30 сегодня</item>
+        <item>Занятие 8.\nНачало в 15:30 завтра</item>
+        <item>Занятие 9.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 10.\nНачало в 15:30 сегодня</item>
+        <item>Занятие 11.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 12.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 13.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 14.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 15.\nНачало в 15:30 послезавтра</item>
+        <item>Занятие 16.\nНачало в 15:30 послезавтра</item>
+    </string-array>
+        - <string-array name="descriptions_theory">
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+        <item>Вид занятия: Лекция</item>
+    </string-array>
+        - <string-array name="descriptions_practice">
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+        <item>Вид занятия: Практическое занятие</item>
+    </string-array>
+
+</resources>

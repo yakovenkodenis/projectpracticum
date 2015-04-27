@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-aa16b3cf885393ef74ba8407c65bcf20627dd05b.jar" />
+    </item>
+    <item
+        jar="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\pre-dexed\debug\classes-c3dcd110a339baf74d20e5eba738b9a43d3080d6.jar" />
+    </item>
+    <item
+        jar="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\pre-dexed\debug\classes-1443572223e0af3bfe60a37d0a1fbaf0173a0f8d.jar" />
+    </item>
+    <item
+        jar="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-de464e14f9281ea8c4daa2fb016765dde1b5659e.jar" />
+    </item>
+    <item
+        jar="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="D:\Android\AndroidStudioProjects\AutoSched\app\build\intermediates\pre-dexed\debug\classes-6e15f26032d10a8053970792997e7dd659348224.jar" />
+    </item>
+
+</items>

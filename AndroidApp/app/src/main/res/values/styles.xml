@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+   <style name="pager_titlestrip_text_appearance">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="listview_text_style">
+        <item name="android:textColor">#333333</item>
+    </style>
+
+</resources>
