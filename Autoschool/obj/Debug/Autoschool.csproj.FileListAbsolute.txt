@@ -1,0 +1,15 @@
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Autoschool.exe.config
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Autoschool.exe
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Autoschool.pdb
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\App.g.cs
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool_MarkupCompile.cache
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool.g.resources
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool.Properties.Resources.resources
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool.csproj.GenerateResource.Cache
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool.exe
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool.pdb
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\MainWindow.baml
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\MainWindow.g.cs
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Main.baml
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Main.g.cs
