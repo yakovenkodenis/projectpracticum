@@ -14,29 +14,30 @@
                     <Button Content="По преподавателям" HorizontalAlignment="Left" Margin="842,20,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="27"/>
                     <Button Content="По студентам" HorizontalAlignment="Left" Margin="842,52,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="25"/>
                     <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="86" Width="815">
-                        <ComboBox HorizontalAlignment="Left" Margin="149,10,0,0" VerticalAlignment="Top" Width="172" Height="36" IsReadOnly="True" Cursor="Hand"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="149,10,0,0" VerticalAlignment="Top" Width="153" Height="36" IsReadOnly="True" Cursor="Hand"/>
                     </GroupBox>
-                    <TextBox HorizontalAlignment="Left" Height="36" Margin="420,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"/>
+                    <TextBox HorizontalAlignment="Left" Height="36" Margin="390,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="27"/>
 
                     <ProgressBar HorizontalAlignment="Left" Height="12" Margin="10,411,0,0" VerticalAlignment="Top" Width="959"/>
                     <Label Content="Критерий поиска:" HorizontalAlignment="Left" Margin="19,29,0,0" VerticalAlignment="Top" Height="36" Width="141" FontSize="16"/>
-                    <Label Content="Группа:" HorizontalAlignment="Left" Margin="347,29,0,0" VerticalAlignment="Top" FontSize="16"/>
-                    <Button Content="Поиск" HorizontalAlignment="Left" Margin="627,25,0,0" VerticalAlignment="Top" Width="188" Height="36" Cursor="Hand"/>
+                    <Label Content="Группа:" HorizontalAlignment="Left" Margin="321,29,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Button Content="Поиск" HorizontalAlignment="Left" Margin="519,25,0,0" VerticalAlignment="Top" Width="140" Height="36" Cursor="Hand"/>
+                    <Button x:Name="btnReload" Content="Обновить" HorizontalAlignment="Left" Margin="672,25,0,0" VerticalAlignment="Top" Width="138" Height="36" Click="btnReload_Click"/>
 
                 </Grid>
             </TabItem>
             <TabItem Header="SQL редактор">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Height="342" Width="959"/>
-                    <RichTextBox HorizontalAlignment="Left" Height="46" Margin="10,10,0,0" VerticalAlignment="Top" Width="752" FontSize="38">
+                    <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="253" Width="959" ItemsSource="{Binding}"/>
+                    <RichTextBox x:Name="InputQuery" HorizontalAlignment="Left" Height="155" Margin="10,10,0,0" VerticalAlignment="Top" Width="752" FontSize="38" TextChanged="InputQuery_TextChanged" PreviewKeyDown="InputQuery_PreviewKeyDown">
                         <FlowDocument>
                             <Paragraph>
                                 <Run Text="SELECT "/>
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
-                    <Button Content="Query" HorizontalAlignment="Left" Margin="767,10,0,0" VerticalAlignment="Top" Width="202" Height="46" Cursor="Hand"/>
-                    <ProgressBar HorizontalAlignment="Left" Height="15" Margin="10,408,0,0" VerticalAlignment="Top" Width="959"/>
+                    <Button Content="Query" HorizontalAlignment="Left" Margin="767,10,0,0" VerticalAlignment="Top" Width="202" Height="75" Cursor="Hand" Click="Button_Click" FontSize="20"/>
+                    <Button Content="Структура БД" HorizontalAlignment="Left" Margin="767,90,0,0" VerticalAlignment="Top" Width="202" Height="75" FontSize="20" Cursor="Hand"/>
                 </Grid>
             </TabItem>
         </TabControl>
