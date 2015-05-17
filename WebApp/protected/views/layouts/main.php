@@ -29,32 +29,32 @@
     <td class="userpanel">
         <div class="loginform">
             <?if(Yii::app()->user->isGuest): ?>
-            <?php $form=$this->beginWidget('CActiveForm', array(
-                'id'=>'login-form',
-                'enableClientValidation'=>true,
-                'clientOptions'=>array(
-                    'validateOnSubmit'=>true,
-                ),
-                'action'=>$this->createUrl('site/login'),
-            )); ?>
+                <?php $form=$this->beginWidget('CActiveForm', array(
+                    'id'=>'login-form',
+                    'enableClientValidation'=>true,
+                    'clientOptions'=>array(
+                        'validateOnSubmit'=>true,
+                    ),
+                    'action'=>$this->createUrl('site/login'),
+                )); ?>
 
-            <div class="row">
-                Логин:<input type="text" name="login"/>
-            </div>
+                <div class="row">
+                    Логин:<input type="text" name="login"/>
+                </div>
 
-            <div class="row">
-                Пароль:<input type="password" name="password"/>
-            </div>
+                <div class="row">
+                    Пароль:<input type="password" name="password"/>
+                </div>
 
-            <div class="row rememberMe">
-                Запомнить меня:<input type="checkbox" name="rememberme"/>
-            </div>
+                <div class="row rememberMe">
+                    Запомнить меня:<input type="checkbox" name="rememberme"/>
+                </div>
 
-            <div class="row buttons">
-                <?php echo TbHtml::submitButton('Войти'); ?>
-            </div>
+                <div class="row buttons">
+                    <?php echo TbHtml::submitButton('Войти'); ?>
+                </div>
 
-            <?php $this->endWidget(); ?>
+                <?php $this->endWidget(); ?>
             <?php else:?>
                 Добро пожаловать, <?php echo Yii::app()->user->getUserModel()->login ?><br />
                 <a href="<?php echo Yii::app()->createUrl('/user/')?>">Профиль</a>
