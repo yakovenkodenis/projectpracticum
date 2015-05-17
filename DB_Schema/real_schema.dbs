@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Autoschools" id="Project_1b4cb4" html="y" template="Default" database="MySql" >
+	<comment><![CDATA[The Autoschools.kh.ua project db schema.]]></comment>
+	<schema name="autoschools" schemaname="autoschools" >
+		<table name="autoschool" >
+			<column name="id" type="int" jt="4" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="name" type="varchar" length="100" jt="12" />
+			<column name="contacts" type="text" jt="-1" />
+			<column name="info" type="text" jt="-1" />
+			<column name="price" type="varchar" length="20" jt="12" />
+			<column name="studentcode" type="varchar" length="10" jt="12" />
+			<column name="teachercode" type="varchar" length="10" jt="12" />
+			<index name="pk_autoschool" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_autoschool" to_schema="autoschools" to_table="user" >
+				<fk_column name="id" pk="autoschol_id" />
+			</fk>
+			<fk name="fk_autoschool_0" to_schema="autoschools" to_table="group" >
+				<fk_column name="id" pk="group_id" />
+			</fk>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="group" >
+			<column name="group_id" type="int" jt="4" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="autoschool_id" type="int" jt="4" />
+			<column name="name" type="varchar" length="100" jt="12" />
+			<column name="practice_start" type="datetime" jt="93" />
+			<column name="practice_days" type="int" jt="4" />
+			<column name="practice_teacher" type="int" jt="4" unsigned="y" />
+			<column name="practice_meetpoint" type="text" jt="-1" />
+			<column name="practice_reserv_count" type="int" jt="4" />
+			<index name="pk_group" unique="PRIMARY_KEY" >
+				<column name="group_id" />
+			</index>
+			<index name="idx_group" unique="UNIQUE" >
+				<column name="practice_teacher" />
+			</index>
+			<fk name="fk_group_0" to_schema="autoschools" to_table="theory" >
+				<fk_column name="group_id" pk="group_id" />
+			</fk>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="practice" >
+			<column name="practice_id" type="int" jt="4" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="student_id" type="int" jt="4" unsigned="y" />
+			<column name="lesson" type="int" jt="4" />
+			<column name="day" type="date" jt="91" />
+			<index name="pk_practice" unique="PRIMARY_KEY" >
+				<column name="practice_id" />
+			</index>
+			<index name="pk_practice_0" unique="UNIQUE" >
+				<column name="student_id" />
+			</index>
+			<fk name="fk_practice" to_schema="autoschools" to_table="user" >
+				<fk_column name="student_id" pk="id" />
+			</fk>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="student_entry" >
+			<column name="entry_id" type="int" jt="4" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="student_id" type="int" jt="4" unsigned="y" />
+			<column name="school_id" type="int" jt="4" />
+			<column name="entry_time" type="varchar" length="20" jt="12" />
+			<column name="additional__info" type="text" jt="-1" />
+			<index name="pk_student_entry" unique="PRIMARY_KEY" >
+				<column name="entry_id" />
+			</index>
+			<index name="pk_student_entry_0" unique="UNIQUE" >
+				<column name="student_id" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="student_to_group" >
+			<column name="group_id" type="int" jt="4" unsigned="y" />
+			<column name="student_id" type="int" jt="4" unsigned="y" />
+			<index name="pk_student_to_group" unique="UNIQUE" >
+				<column name="student_id" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="theory" >
+			<column name="theory_id" type="int" jt="4" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="teacher_id" type="int" jt="4" />
+			<column name="group_id" type="int" jt="4" />
+			<column name="room" type="varchar" length="20" jt="12" />
+			<column name="start_time" type="varchar" length="20" jt="12" />
+			<column name="end_time" type="varchar" length="20" jt="12" />
+			<index name="pk_theory" unique="PRIMARY_KEY" >
+				<column name="theory_id" />
+			</index>
+			<index name="pk_theory_0" unique="UNIQUE" >
+				<column name="group_id" />
+			</index>
+			<index name="pk_theory_1" unique="UNIQUE" >
+				<column name="teacher_id" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="user" >
+			<column name="id" type="int" jt="4" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="login" type="varchar" length="100" jt="12" />
+			<column name="password" type="varchar" length="64" jt="12" />
+			<column name="role" type="varchar" length="20" jt="12" />
+			<column name="autoschol_id" type="int" jt="4" />
+			<column name="email" type="varchar" length="100" jt="12" />
+			<column name="name" type="varchar" length="200" jt="12" />
+			<column name="telephone" type="varchar" length="30" jt="12" />
+			<column name="address" type="text" length="100" jt="-1" />
+			<index name="pk_user" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pk_user_0" unique="UNIQUE" >
+				<column name="autoschol_id" />
+			</index>
+			<fk name="fk_user" to_schema="autoschools" to_table="practice" >
+				<fk_column name="id" pk="student_id" />
+			</fk>
+			<fk name="fk_user_0" to_schema="autoschools" to_table="student_entry" >
+				<fk_column name="id" pk="student_id" />
+			</fk>
+			<fk name="fk_user_1" to_schema="autoschools" to_table="student_to_group" >
+				<fk_column name="id" pk="student_id" />
+			</fk>
+			<fk name="fk_user_2" to_schema="autoschools" to_table="theory" >
+				<fk_column name="id" pk="theory_id" />
+			</fk>
+			<fk name="fk_user_3" to_schema="autoschools" to_table="group" >
+				<fk_column name="id" pk="practice_teacher" />
+			</fk>
+			<fk name="fk_user_4" to_schema="autoschools" to_table="student_entry" >
+				<fk_column name="id" pk="student_id" />
+			</fk>
+			<fk name="fk_user_5" to_schema="autoschools" to_table="theory" >
+				<fk_column name="id" pk="teacher_id" />
+			</fk>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+	</schema>
+	<layout id="Layout_1b4cb6" name="Autoschools" show_relation_columns="y" >
+		<entity schema="autoschools" name="user" color="b2cdf7" x="45" y="255" />
+		<entity schema="autoschools" name="practice" color="b2cdf7" x="570" y="90" />
+		<entity schema="autoschools" name="student_to_group" color="b2cdf7" x="750" y="75" />
+		<entity schema="autoschools" name="group" color="b2cdf7" x="45" y="540" />
+		<entity schema="autoschools" name="student_entry" color="b2cdf7" x="870" y="345" />
+		<entity schema="autoschools" name="autoschool" color="b2cdf7" x="270" y="45" />
+		<entity schema="autoschools" name="theory" color="b2cdf7" x="510" y="525" />
+	</layout>
+</project>
