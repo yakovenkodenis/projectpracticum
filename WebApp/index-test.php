@@ -1,5 +1,7 @@
 <?php
 /**
+Моё самое тайное сообщение, которое никто никогда не найдет!!!!<br />
+Бугагашеньки<br />
  * This is the bootstrap file for test application.
  * This file should be removed when the application is deployed for production.
  */
