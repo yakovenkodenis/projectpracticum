@@ -11,6 +11,7 @@ using System.Windows.Media;
 using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.Text;
+using System.Threading.Tasks;
 using DotLiquid.Util;
 using PdfSharp.Pdf;
 using Spire.Pdf;
@@ -44,25 +45,19 @@ namespace Autoschool
             WindowState = WindowState.Minimized;
         }
 
-        private void btnReload_Click(object sender, RoutedEventArgs e)
+        private async void btnReload_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                //var sb = new StringBuilder();
-                //foreach (var x in DatabaseModel.GetLessonsList())
-                //{
-                //    sb.Append(x).Append(Environment.NewLine);
-                //}
-                //MessageBox.Show(sb.ToString());
-
-                DatabaseModel.SeedDatabase();
+                ProgressBar.IsIndeterminate = true;
+                await Task.Run(() => DatabaseModel.SeedDatabase());
+                ProgressBar.IsIndeterminate = false;
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
-            //MessageBox.Show(DatabaseModel.GetData());
         }
 
         private void InputQuery_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -86,11 +81,11 @@ namespace Autoschool
                 DataGrid.Items.Refresh();
                 MessageBox.Show(ex.Message);
             }
-            catch
+            catch(Exception ex)
             {
-                DataGrid.ItemsSource = null;
+                //DataGrid.ItemsSource = null;
                 DataGrid.Items.Refresh();
-                MessageBox.Show("Проверьте правильность запроса");
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
         }
 
@@ -110,7 +105,6 @@ namespace Autoschool
                     adapter.Fill(dt);
                     DataGrid.DataContext = dt;
                 }
-                connection.Close();
             }
         }
 

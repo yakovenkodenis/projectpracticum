@@ -326,7 +326,6 @@ namespace Autoschool
         {
             foreach (var t in teachers.Where(t => t.Name.Equals(x.TeacherName)))
             {
-                MessageBox.Show("ID: " + t.Id + "\tName: " + t.Name + "\tRole: " + t.Role);
                 return t.Id;
             }
             return "NULL";
@@ -336,7 +335,6 @@ namespace Autoschool
         {
             foreach (var t in students.Where(t => t.Name.Equals(x.StudentName)))
             {
-                MessageBox.Show("ID: " + t.Id + "\tName: " + t.Name + "\tRole: " + t.Role);
                 return t.Id;
             }
             return "NULL";

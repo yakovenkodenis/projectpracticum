@@ -13,14 +13,16 @@
                     </GroupBox>
                     <Button Content="По преподавателям" HorizontalAlignment="Left" Margin="842,20,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="27" Click="Button_Click_1"/>
                     <Button Content="По студентам" HorizontalAlignment="Left" Margin="842,52,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="25"/>
-                    <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="86" Width="815"/>
+                    <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" Height="86" Width="815">
+                        <ComboBox HorizontalAlignment="Left" Margin="143,11,0,0" VerticalAlignment="Top" Width="160" Height="36"/>
+                    </GroupBox>
                     <TextBox HorizontalAlignment="Left" Height="36" Margin="390,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="27"/>
-                    
-                    <ProgressBar HorizontalAlignment="Left" Height="12" Margin="10,411,0,0" VerticalAlignment="Top" Width="959"/>
+
+                    <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="12" Margin="10,411,0,0" VerticalAlignment="Top" Width="959"/>
                     <Label Content="Критерий поиска:" HorizontalAlignment="Left" Margin="19,29,0,0" VerticalAlignment="Top" Height="36" Width="141" FontSize="16"/>
                     <Label Content="Группа:" HorizontalAlignment="Left" Margin="321,29,0,0" VerticalAlignment="Top" FontSize="16"/>
                     <Button Content="Поиск" HorizontalAlignment="Left" Margin="519,25,0,0" VerticalAlignment="Top" Width="140" Height="36" Cursor="Hand"/>
-                    <Button x:Name="btnReload" Content="Обновить" HorizontalAlignment="Left" Margin="672,25,0,0" VerticalAlignment="Top" Width="138" Height="36" Click="btnReload_Click"/>
+                    <Button x:Name="BtnReload" Content="Обновить" HorizontalAlignment="Left" Margin="672,25,0,0" VerticalAlignment="Top" Width="138" Height="36" Click="btnReload_Click"/>
 
                 </Grid>
             </TabItem>
