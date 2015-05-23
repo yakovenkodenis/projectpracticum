@@ -80,6 +80,12 @@ namespace Autoschool
             {
                 FillGrid();
             }
+            catch (MySqlException ex)
+            {
+                DataGrid.ItemsSource = null;
+                DataGrid.Items.Refresh();
+                MessageBox.Show(ex.Message);
+            }
             catch
             {
                 DataGrid.ItemsSource = null;
@@ -127,8 +133,44 @@ namespace Autoschool
 
         private readonly List<Tag> _mTags = new List<Tag>();
 
-        private readonly List<char> _specials = new List<char> {'\n', '\r', '\t'};
-        private readonly List<string> _tags = new List<string> {"SELECT", "FROM", "WHERE", "JOIN", "DESC", "ASC", "ORDER BY"};
+        private readonly List<char> _specials = new List<char> {'\n', '\r', '\t', ';'};
+
+        private readonly List<string> _tags = new List<string>
+        {
+            "SELECT",
+            "FROM",
+            "WHERE",
+            "JOIN",
+            "DESC",
+            "ASC",
+            "ORDER",
+            "AND",
+            "OR",
+            "INNER",
+            "OUTER",
+            "NATURAL",
+            "FULL",
+            "ON",
+            "HAVING",
+            "GROUP",
+            "BY",
+            "CREATE",
+            "VIEW",
+            "AS",
+            "COUNT",
+            "MIN",
+            "MAX",
+            "AVG",
+            "GRANT",
+            "IN",
+            "IS",
+            "NULL",
+            "SHOW",
+            "TABLE",
+            "TABLES",
+            "PRINT",
+            "DISTINCT"
+        };
 
         new struct Tag
         {
@@ -224,8 +266,14 @@ namespace Autoschool
                 try
                 {
                     var range = new TextRange(_mTags[i].StartPosition, _mTags[i].EndPosition);
+                    range.Text = range.Text.ToUpper();
                     range.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.DodgerBlue));
                     range.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
+                    if (InputQuery.CaretPosition != null)
+                    {
+                        InputQuery.CaretPosition = InputQuery.CaretPosition.GetPositionAtOffset(0,
+                            LogicalDirection.Forward);
+                    }
                 }
                 catch
                 {
