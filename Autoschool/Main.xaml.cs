@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Drawing;
+using System.Text;
+using DotLiquid.Util;
+using PdfSharp.Pdf;
+using Spire.Pdf;
+using Spire.Pdf.Graphics;
+using PdfDocument = Spire.Pdf.PdfDocument;
 
 namespace Autoschool
 {
@@ -45,12 +48,15 @@ namespace Autoschool
         {
             try
             {
-                var sb = new StringBuilder();
-                foreach (var x in WebsiteModel.GetGroup())
-                {
-                    sb.Append(x).Append(Environment.NewLine);
-                }
-                MessageBox.Show(sb.ToString());
+                //var sb = new StringBuilder();
+                //foreach (var x in DatabaseModel.GetLessonsList())
+                //{
+                //    sb.Append(x).Append(Environment.NewLine);
+                //}
+                //MessageBox.Show(sb.ToString());
+
+                DatabaseModel.SeedDatabase();
+
             }
             catch (Exception ex)
             {
@@ -104,7 +110,16 @@ namespace Autoschool
 
         private string Query
         {
-            get { return new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text; }
+            get
+            {
+                var result =  new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text;
+                if (result.Split(' ').Select(x => x.ToUpper()).Intersect(new[] { "INSERT", "UPDATE", "DROP", "DELETE", "TRUNCATE" }).Any())
+                {
+                    MessageBox.Show("ВНИМАНИЕ!\nЭто рабочий проект. Производить изменения базы данных запрещено!");
+                    throw new InvalidOperationException("Данная команда запрещена!");
+                }
+                return result;
+            }
         }
 
 
@@ -219,6 +234,27 @@ namespace Autoschool
             }
 
             InputQuery.TextChanged += InputQuery_TextChanged;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var pdf = new PdfDocument();
+            var page = pdf.Pages.Add();
+
+            //var lessons = DatabaseModel.GetLessonsString();
+            //var encoding = Encoding.UTF8;
+            //var print = encoding.GetString(Encoding.UTF8.GetBytes(lessons));
+
+            var utf8str = "\t\t\tja;dlf hjsdf";
+            var bytes = Encoding.Default.GetBytes(utf8str);
+            utf8str = Encoding.UTF8.GetString(bytes);
+
+
+            var font = new PdfFont(PdfFontFamily.Helvetica, 12f, PdfFontStyle.Regular);
+            page.Canvas.DrawString(utf8str, font, PdfBrushes.Green, new PointF(0, 20f),
+                new PdfStringFormat(PdfTextAlignment.Center));
+            pdf.SaveToFile(@"sample.pdf");
+            Process.Start(@"sample.pdf");
         }
     }
 }
