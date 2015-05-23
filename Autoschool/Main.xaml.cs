@@ -91,35 +91,40 @@ namespace Autoschool
 
         private void FillGrid()
         {
-            var connString = DatabaseModel.ConnectionString;
-
-            var sql = Query;
-
-            using (var connection = new MySqlConnection(connString))
+            try
             {
-                connection.Open();
-                using (var cmd = new MySqlCommand(sql, connection))
+                var connString = DatabaseModel.ConnectionString;
+
+                var sql = Query;
+                if (sql.Split(' ')
+                    .Select(x => x.ToUpper())
+                    .Intersect(new[] {"INSERT", "UPDATE", "DROP", "DELETE", "TRUNCATE"})
+                    .Any())
                 {
-                    var dt = new DataTable();
-                    var adapter = new MySqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-                    DataGrid.DataContext = dt;
+                    throw new InvalidOperationException("Данная команда запрещена!");
                 }
+
+                using (var connection = new MySqlConnection(connString))
+                {
+                    connection.Open();
+                    using (var cmd = new MySqlCommand(sql, connection))
+                    {
+                        var dt = new DataTable();
+                        var adapter = new MySqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                        DataGrid.DataContext = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private string Query
         {
-            get
-            {
-                var result =  new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text;
-                if (result.Split(' ').Select(x => x.ToUpper()).Intersect(new[] { "INSERT", "UPDATE", "DROP", "DELETE", "TRUNCATE" }).Any())
-                {
-                    MessageBox.Show("ВНИМАНИЕ!\nЭто рабочий проект. Производить изменения базы данных запрещено!");
-                    throw new InvalidOperationException("Данная команда запрещена!");
-                }
-                return result;
-            }
+            get { return new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text; }
         }
 
 
@@ -163,7 +168,9 @@ namespace Autoschool
             "TABLE",
             "TABLES",
             "PRINT",
-            "DISTINCT"
+            "DISTINCT",
+            "LEFT",
+            "RIGHT"
         };
 
         new struct Tag
