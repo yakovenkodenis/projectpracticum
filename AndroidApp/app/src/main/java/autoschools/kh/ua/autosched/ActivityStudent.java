@@ -156,7 +156,7 @@ public class ActivityStudent extends FragmentActivity
 //        } catch (IOException e){
 //            e.printStackTrace();
 //        }
-//    }
+//    }.
 
     private void showInfoDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityStudent.this);
