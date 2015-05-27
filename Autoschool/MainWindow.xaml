@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Автошкола" Height="255.426" Width="301.858" Background="#4d4d4d" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown" FontFamily="HelveticaNeueCyr" FontSize="20">
     <Grid Height="262" VerticalAlignment="Top">
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="29,165,0,0" VerticalAlignment="Top" Width="245" Height="30" FontFamily="HelveticaNeueCyr" FontSize="22" ToolTip="Пароль" MaxLength="30" Opacity="0.8"/>
-        <TextBox x:Name="txtLogin" HorizontalAlignment="Left" Height="30" Margin="29,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" FontFamily="HelveticaNeueCyr" FontSize="22" ToolTip="Логин" MaxLines="1" Opacity="0.8"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="29,165,0,0" VerticalAlignment="Top" Width="245" Height="30" FontFamily="HelveticaNeueCyr" FontSize="22" ToolTip="Пароль" MaxLength="30" Opacity="0.8" TabIndex="1"/>
+        <TextBox x:Name="txtLogin" HorizontalAlignment="Left" Height="30" Margin="29,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" FontFamily="HelveticaNeueCyr" FontSize="22" ToolTip="Логин" MaxLines="1" Opacity="0.8" TabIndex="0"/>
         <Button Content="x" HorizontalAlignment="Left" Margin="273,-2,-1,0" VerticalAlignment="Top" Width="30" Height="30" Opacity="0.4" Click="ButtonWindowClose" TextOptions.TextHintingMode="Animated" Cursor="Hand"/>
         <Button Content="_" HorizontalAlignment="Left" Margin="243,-2,0,0" VerticalAlignment="Top" Width="30" Height="30" Opacity="0.4" Click="ButtonWindowMinimize" TextOptions.TextHintingMode="Animated" Cursor="Hand"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="30,72,0,0" VerticalAlignment="Top" Foreground="#FF1ABC9C" FontFamily="HelveticaNeueCyr" FontSize="18" Opacity="0.9" FontWeight="Light"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="30,134,0,0" VerticalAlignment="Top" Foreground="#FF1ABC9C" FontFamily="HelveticaNeueCyr" FontSize="18" Opacity="0.9" FontWeight="Light"/>
         <Label Content="Автошкола" HorizontalAlignment="Left" Margin="77,26,0,0" VerticalAlignment="Top" Foreground="#FF1ABC9C" FontFamily="HelveticaNeueCyr" FontSize="28" FontWeight="Light"/>
-        <Button Content="Вход" HorizontalAlignment="Left" Margin="29,210,0,0" VerticalAlignment="Top" Width="245" Height="30
-                " Foreground="#FF1ABC9C" FontWeight="Light" Click="ButtonOpenMain" Cursor="Hand"/>
+        <Button x:Name="LoginBtn" Content="Вход" HorizontalAlignment="Left" Margin="29,210,0,0" VerticalAlignment="Top" Width="245" Height="30
+                " Foreground="#FF1ABC9C" FontWeight="Light" Click="ButtonOpenMain" Cursor="Hand" TabIndex="2"/>
     </Grid>
 </Window>

@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Autoschool
 {
@@ -42,20 +33,64 @@ namespace Autoschool
 
         private void ButtonOpenMain(object sender, RoutedEventArgs e)
         {
-            if (Authenticate(txtLogin.Text, txtPassword.Password))
+            try
             {
-                new Main().Show();
-                Close();
+                if (Authenticate(txtLogin.Text, txtPassword.Password))
+                {
+                    new Main().Show();
+                    Close();
+                    if (_currentUser.Role.Equals("administrator"))
+                    {
+                        MessageBox.Show(string.Format("Здравствуйте, {0},{1}Вы вошли в систему как администратор.",
+                            _currentUser.Name, Environment.NewLine));
+                    }
+                    else
+                    {
+
+                        _currentAutoschool = WebsiteModel.GetAutoschoolByUser(_currentUser);
+                        MessageBox.Show(
+                            string.Format("Здравствуйте, {0},{1}Вы вошли в систему как модератор автошколы {2}.",
+                                _currentUser.Name, Environment.NewLine, _currentAutoschool));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка входа");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка входа");
+                MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
 
-        private static bool Authenticate(string login, string password)
+        private static User _currentUser;
+        private static string _currentAutoschool;
+        private bool Authenticate(string login, string password)
         {
-            return true;
+            _currentUser =
+                WebsiteModel.GetUser()
+                    .First(user => (user.Role.Equals("administrator") || user.Role.Equals("moderator"))
+                                   && user.Login.Equals(login));
+            if (_currentUser.Equals(null))
+            {
+                txtPassword.Clear();
+                txtLogin.Clear();
+                MessageBox.Show("У Вас нет прав доступа");
+                return false;
+            }
+            if (_currentUser.Password.Equals(Md5(password))) return true;
+            txtPassword.Clear();
+            txtLogin.Clear();
+            MessageBox.Show(string.Format("Неверный пароль для пользователя {0}", _currentUser.Login));
+            return false;
+        }
+
+        private static string Md5(string pass)
+        {
+            var encoded = new UTF8Encoding().GetBytes(pass);
+            var hash = ((HashAlgorithm) CryptoConfig.CreateFromName("MD5")).ComputeHash(encoded);
+            return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
         }
 
     }

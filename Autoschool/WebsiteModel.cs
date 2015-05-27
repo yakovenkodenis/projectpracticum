@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace Autoschool
@@ -153,7 +154,23 @@ namespace Autoschool
             }
             _connection.Close();
             return result;
-        } 
+        }
+
+        public static string GetAutoschoolByUser(User user)
+        {
+            var schoolId = user.AutoschoolId;
+            var result = string.Empty;
+            var reader =
+                GetDataReader(
+                    string.Format(
+                        "SELECT DISTINCT `autoschool`.name FROM `user`, `autoschool` WHERE `autoschool`.id = {0}",
+                        schoolId));
+            if (reader.Read())
+            {
+                result = reader["name"].ToString();
+            }
+            return result;
+        }
 
 
         private static MySqlDataReader GetDataReader(string query)

@@ -37,6 +37,8 @@ namespace Autoschool
 
         private void ButtonWindowClose(object sender, RoutedEventArgs e)
         {
+
+            new MainWindow().Show();
             Close();
         }
 
