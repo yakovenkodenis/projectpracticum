@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -25,9 +26,15 @@ namespace Autoschool
     /// </summary>
     public partial class Main : Window
     {
-        public Main()
+        private readonly User _currentUser;
+        private readonly string _currentAutoschool;
+        private readonly bool _isAdmin;
+        public Main(User user, string autoschool)
         {
             InitializeComponent();
+            _currentUser = user;
+            _currentAutoschool = autoschool;
+            _isAdmin = _currentUser.Role.Equals("administrator");
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -37,7 +44,6 @@ namespace Autoschool
 
         private void ButtonWindowClose(object sender, RoutedEventArgs e)
         {
-
             new MainWindow().Show();
             Close();
         }
@@ -53,6 +59,8 @@ namespace Autoschool
             {
                 ProgressBar.IsIndeterminate = true;
                 await Task.Run(() => DatabaseModel.SeedDatabase());
+                await Task.Run(() => GetSearchGridTable());
+
                 ProgressBar.IsIndeterminate = false;
 
             }
@@ -64,11 +72,9 @@ namespace Autoschool
 
         private void InputQuery_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                Button_Click(sender, e);
-                e.Handled = true;
-            }
+            if (e.Key != Key.Enter) return;
+            Button_Click(sender, e);
+            e.Handled = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -129,12 +135,160 @@ namespace Autoschool
             get { return new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text; }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var pdf = new PdfDocument();
+            var page = pdf.Pages.Add();
+
+            //var lessons = DatabaseModel.GetLessonsString();
+            //var encoding = Encoding.UTF8;
+            //var print = encoding.GetString(Encoding.UTF8.GetBytes(lessons));
+
+            var utf8Str = "\t\t\tja;dlf hjsdf";
+            var bytes = Encoding.Default.GetBytes(utf8Str);
+            utf8Str = Encoding.UTF8.GetString(bytes);
+
+
+            var font = new PdfFont(PdfFontFamily.Helvetica, 12f, PdfFontStyle.Regular);
+            page.Canvas.DrawString(utf8Str, font, PdfBrushes.Green, new PointF(0, 20f),
+                new PdfStringFormat(PdfTextAlignment.Center));
+            pdf.SaveToFile(@"sample.pdf");
+            Process.Start(@"sample.pdf");
+        }
+
+        private readonly ObservableCollection<string> _criteriaSearch = new ObservableCollection<string>();
+        private DataTable Students;
+        private DataTable Teachers;
+        private DataTable Autoschools;
+        private DataTable Lessons;
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ProgressBar.IsIndeterminate = true;
+            await Task.Run(() => GetSearchGridTable());
+            ProgressBar.IsIndeterminate = false;
+
+            if (_isAdmin)
+            {
+                _criteriaSearch.Add("Автошколы");
+                _criteriaSearch.Add("Студенты");
+                _criteriaSearch.Add("Преподаватели");
+                _criteriaSearch.Add("Занятия");
+            }
+            else
+            {
+                _criteriaSearch.Add("Студенты");
+                _criteriaSearch.Add("Преподаватели");
+                _criteriaSearch.Add("Занятия");
+            }
+            CriteriaSearch.FontSize = 16d;
+            CriteriaSearch.VerticalContentAlignment = VerticalAlignment.Center;
+            CriteriaSearch.ItemsSource = _criteriaSearch;
+        }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GetSearchGridTable()
+        {
+            var connString = DatabaseModel.ConnectionString;
+
+            const string schools = "SELECT id, name, contacts FROM autoschool;";
+
+            const string teachers =
+                "SELECT `teacher`.id, `teacher`.name, `teacher`.type, `teacher`.email, `teacher`.phone_number, `autoschool`.name AS 'autoschool' " +
+                "FROM `autoschool`, `teacher` WHERE `autoschool`.id = `teacher`.autoschool_id;";
+
+            const string students =
+                "SELECT `student`.id, `student`.name, `student`.email, `group`.name AS 'group', `autoschool`.name AS 'autoschool' " +
+                "FROM `student`, `group`, `autoschool` WHERE `student`.group_id = `group`.id AND " +
+                "`group`.autoschool_id = `autoschool`.id;";
+
+            var lessons =
+                "SELECT DISTINCT lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, " +
+                "date.finish_time, teacher.name AS 'teacher' from lesson, teacher, date, autoschool " +
+                "WHERE date.id = lesson.date_id" +
+                (_isAdmin ? string.Empty : (" AND autoschool.name = '" + "Автодор" + "'")) +
+                " ORDER BY date.start_time;";
+
+            MessageBox.Show(_currentAutoschool);
+
+
+
+            using (var connection = new MySqlConnection(connString))
+            {
+                connection.Open();
+                using (var cmd = new MySqlCommand(schools, connection))
+                {
+                    var dt = new DataTable();
+                    var adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    Autoschools = dt;
+                }
+                using (var cmd = new MySqlCommand(teachers, connection))
+                {
+                    var dt = new DataTable();
+                    var adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    Teachers = dt;
+                }
+                using (var cmd = new MySqlCommand(students, connection))
+                {
+                    var dt = new DataTable();
+                    var adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    Students = dt;
+                }
+                using (var cmd = new MySqlCommand(lessons, connection))
+                {
+                    var dt = new DataTable();
+                    var adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    Lessons = dt;
+                }
+
+                connection.Close();
+            }
+        }
+
+        private void CriteriaSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                switch (CriteriaSearch.SelectedValue.ToString())
+                {
+                    case "Автошколы":
+                        SearchGrid.DataContext = Autoschools;
+                        break;
+                    case "Преподаватели":
+                        SearchGrid.DataContext = Teachers;
+                        break;
+                    case "Студенты":
+                        SearchGrid.DataContext = Students;
+                        break;
+                    case "Занятия":
+                        SearchGrid.DataContext = Lessons;
+                        break;
+                    default:
+                        return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
+        }
+
+
+
+
 
         // ===================== SYNTAX HIGHLIGHTING CODE ================== //
 
         private readonly List<Tag> _mTags = new List<Tag>();
 
-        private readonly List<char> _specials = new List<char> {'\n', '\r', '\t', ';'};
+        private readonly List<char> _specials = new List<char> { '\n', '\r', '\t', ';' };
 
         private readonly List<string> _tags = new List<string>
         {
@@ -255,10 +409,10 @@ namespace Autoschool
                 var context = navigator.GetPointerContext(LogicalDirection.Backward);
                 if (context == TextPointerContext.ElementStart && navigator.Parent is Run)
                 {
-                    var text = ((Run) navigator.Parent).Text;
+                    var text = ((Run)navigator.Parent).Text;
                     if (text != string.Empty)
                     {
-                        CheckWordsInRun((Run) navigator.Parent);
+                        CheckWordsInRun((Run)navigator.Parent);
                     }
                 }
                 navigator = navigator.GetNextContextPosition(LogicalDirection.Forward);
@@ -287,25 +441,5 @@ namespace Autoschool
             InputQuery.TextChanged += InputQuery_TextChanged;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var pdf = new PdfDocument();
-            var page = pdf.Pages.Add();
-
-            //var lessons = DatabaseModel.GetLessonsString();
-            //var encoding = Encoding.UTF8;
-            //var print = encoding.GetString(Encoding.UTF8.GetBytes(lessons));
-
-            var utf8str = "\t\t\tja;dlf hjsdf";
-            var bytes = Encoding.Default.GetBytes(utf8str);
-            utf8str = Encoding.UTF8.GetString(bytes);
-
-
-            var font = new PdfFont(PdfFontFamily.Helvetica, 12f, PdfFontStyle.Regular);
-            page.Canvas.DrawString(utf8str, font, PdfBrushes.Green, new PointF(0, 20f),
-                new PdfStringFormat(PdfTextAlignment.Center));
-            pdf.SaveToFile(@"sample.pdf");
-            Process.Start(@"sample.pdf");
-        }
     }
 }

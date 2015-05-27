@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -37,7 +36,7 @@ namespace Autoschool
             {
                 if (Authenticate(txtLogin.Text, txtPassword.Password))
                 {
-                    new Main().Show();
+                    new Main(_currentUser, _currentAutoschool).Show();
                     Close();
                     if (_currentUser.Role.Equals("administrator"))
                     {
@@ -70,9 +69,9 @@ namespace Autoschool
         {
             _currentUser =
                 WebsiteModel.GetUser()
-                    .First(user => (user.Role.Equals("administrator") || user.Role.Equals("moderator"))
+                    .FirstOrDefault(user => (user.Role.Equals("administrator") || user.Role.Equals("moderator"))
                                    && user.Login.Equals(login));
-            if (_currentUser.Equals(null))
+            if (_currentUser == null)
             {
                 txtPassword.Clear();
                 txtLogin.Clear();
@@ -82,7 +81,8 @@ namespace Autoschool
             if (_currentUser.Password.Equals(Md5(password))) return true;
             txtPassword.Clear();
             txtLogin.Clear();
-            MessageBox.Show(string.Format("Неверный пароль для пользователя {0}", _currentUser.Login));
+            if (_currentUser != null)
+                MessageBox.Show(string.Format("Неверный пароль для пользователя {0}", _currentUser.Login));
             return false;
         }
 

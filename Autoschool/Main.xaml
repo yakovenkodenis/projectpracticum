@@ -1,34 +1,33 @@
 ﻿<Window x:Class="Autoschool.Main"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Автошкола" Height="462.064" Width="984.819" Background="#FF4D4D4D" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontFamily="HelveticaNeueCyr">
+        Title="Автошкола" Height="462.064" Width="984.819" Background="#FF4D4D4D" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontFamily="HelveticaNeueCyr" Loaded="Window_Loaded">
     <Grid>
         <Button Content="x" HorizontalAlignment="Left" Margin="956,-2,-1,0" VerticalAlignment="Top" Width="30" Height="30" Opacity="0.4" Click="ButtonWindowClose" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7"/>
         <Button Content="_" HorizontalAlignment="Left" Margin="926,-2,0,0" VerticalAlignment="Top" Width="30" Height="30" Opacity="0.4" Click="ButtonWindowMinimize" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7"/>
         <TabControl HorizontalAlignment="Left" Height="458" VerticalAlignment="Top" Width="985" Margin="0,10,0,0">
             <TabItem Header="Основная панель">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Height="314" Width="959"/>
+                    <DataGrid x:Name="SearchGrid" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Height="314" Width="959" ItemsSource="{Binding}" IsReadOnly="True"/>
                     <GroupBox Header="Отчетность" HorizontalAlignment="Left" Margin="830,-1,0,0" VerticalAlignment="Top" Height="87" Width="139">
                     </GroupBox>
                     <Button Content="По преподавателям" HorizontalAlignment="Left" Margin="842,20,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="27" Click="Button_Click_1"/>
                     <Button Content="По студентам" HorizontalAlignment="Left" Margin="842,52,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="25"/>
                     <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" Height="86" Width="815">
-                        <ComboBox HorizontalAlignment="Left" Margin="143,11,0,0" VerticalAlignment="Top" Width="160" Height="36"/>
+                        <ComboBox x:Name="CriteriaSearch" HorizontalAlignment="Left" Margin="143,13,0,0" VerticalAlignment="Top" Width="225" Height="36" SelectionChanged="CriteriaSearch_SelectionChanged"/>
                     </GroupBox>
-                    <TextBox HorizontalAlignment="Left" Height="36" Margin="390,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="27"/>
+                    <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="36" Margin="391,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="27"/>
 
                     <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="12" Margin="10,411,0,0" VerticalAlignment="Top" Width="959"/>
-                    <Label Content="Критерий поиска:" HorizontalAlignment="Left" Margin="19,29,0,0" VerticalAlignment="Top" Height="36" Width="141" FontSize="16"/>
-                    <Label Content="Группа:" HorizontalAlignment="Left" Margin="321,29,0,0" VerticalAlignment="Top" FontSize="16"/>
-                    <Button Content="Поиск" HorizontalAlignment="Left" Margin="519,25,0,0" VerticalAlignment="Top" Width="140" Height="36" Cursor="Hand"/>
-                    <Button x:Name="BtnReload" Content="Обновить" HorizontalAlignment="Left" Margin="672,25,0,0" VerticalAlignment="Top" Width="138" Height="36" Click="btnReload_Click"/>
+                    <Label Content="Критерий поиска:" HorizontalAlignment="Left" Margin="19,30,0,0" VerticalAlignment="Top" Height="36" Width="141" FontSize="16"/>
+                    <Button x:Name="SearchBtn" Content="Поиск" HorizontalAlignment="Left" Margin="577,26,0,0" VerticalAlignment="Top" Width="114" Height="36" Cursor="Hand" Click="SearchBtn_Click"/>
+                    <Button x:Name="BtnReload" Content="Обновить" HorizontalAlignment="Left" Margin="696,26,0,0" VerticalAlignment="Top" Width="114" Height="36" Click="btnReload_Click"/>
 
                 </Grid>
             </TabItem>
             <TabItem Header="SQL редактор">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="253" Width="959" ItemsSource="{Binding}"/>
+                    <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="253" Width="959" ItemsSource="{Binding}" IsReadOnly="True"/>
                     <RichTextBox x:Name="InputQuery" HorizontalAlignment="Left" Height="155" Margin="10,10,0,0" VerticalAlignment="Top" Width="752" FontSize="38" TextChanged="InputQuery_TextChanged" PreviewKeyDown="InputQuery_PreviewKeyDown">
                         <FlowDocument>
                             <Paragraph>
