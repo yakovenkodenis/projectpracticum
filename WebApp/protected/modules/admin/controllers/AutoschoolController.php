@@ -137,7 +137,7 @@ class AutoschoolController extends Controller
         }
         $model = $this->loadSettingsModel($id);
 
-        // Uncomment the following line if AJAX validation is needed
+        // Uncomment the following line if AJAX validation is needed.
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['PracticeSettings'])) {
