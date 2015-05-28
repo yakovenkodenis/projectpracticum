@@ -36,6 +36,10 @@ namespace Autoschool
             {
                 if (Authenticate(txtLogin.Text, txtPassword.Password))
                 {
+                    
+                    _currentAutoschool = _currentUser.Role.Equals("moderator")
+                        ? WebsiteModel.GetAutoschoolByUser(_currentUser)
+                        : string.Empty;
                     new Main(_currentUser, _currentAutoschool).Show();
                     Close();
                     if (_currentUser.Role.Equals("administrator"))
@@ -45,8 +49,6 @@ namespace Autoschool
                     }
                     else
                     {
-
-                        _currentAutoschool = WebsiteModel.GetAutoschoolByUser(_currentUser);
                         MessageBox.Show(
                             string.Format("Здравствуйте, {0},{1}Вы вошли в систему как модератор автошколы {2}.",
                                 _currentUser.Name, Environment.NewLine, _currentAutoschool));
@@ -70,7 +72,7 @@ namespace Autoschool
             _currentUser =
                 WebsiteModel.GetUser()
                     .FirstOrDefault(user => (user.Role.Equals("administrator") || user.Role.Equals("moderator"))
-                                   && user.Login.Equals(login));
+                                            && user.Login.Equals(login));
             if (_currentUser == null)
             {
                 txtPassword.Clear();

@@ -1,0 +1,9 @@
+﻿<Window x:Class="Autoschool.DbStructure"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DbStructure" Height="300" Width="300">
+    <Grid>
+        <Image x:Name="dbStructure" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="292" Stretch="None"/>
+
+    </Grid>
+</Window>

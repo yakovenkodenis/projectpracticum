@@ -185,11 +185,6 @@ namespace Autoschool
             CriteriaSearch.ItemsSource = _criteriaSearch;
         }
 
-        private void SearchBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void GetSearchGridTable()
         {
             var connString = DatabaseModel.ConnectionString;
@@ -206,13 +201,11 @@ namespace Autoschool
                 "`group`.autoschool_id = `autoschool`.id;";
 
             var lessons =
-                "SELECT DISTINCT lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, " +
-                "date.finish_time, teacher.name AS 'teacher' from lesson, teacher, date, autoschool " +
+                "SELECT DISTINCT teacher.name AS 'teacher', lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, " +
+                "date.finish_time from lesson, teacher, date, autoschool " +
                 "WHERE date.id = lesson.date_id" +
                 (_isAdmin ? string.Empty : (" AND autoschool.name = '" + "Автодор" + "'")) +
                 " ORDER BY date.start_time;";
-
-            MessageBox.Show(_currentAutoschool);
 
 
 
@@ -279,9 +272,6 @@ namespace Autoschool
                 MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
         }
-
-
-
 
 
         // ===================== SYNTAX HIGHLIGHTING CODE ================== //
@@ -418,7 +408,7 @@ namespace Autoschool
                 navigator = navigator.GetNextContextPosition(LogicalDirection.Forward);
             }
 
-            for (int i = 0; i < _mTags.Count; ++i)
+            for (var i = 0; i < _mTags.Count; ++i)
             {
                 try
                 {

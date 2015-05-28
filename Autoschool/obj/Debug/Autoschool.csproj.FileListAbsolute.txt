@@ -28,3 +28,7 @@ D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Spire.Pdf.xml
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\it\DotLiquid.resources.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\de\PdfSharp.resources.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\de\PdfSharp.Charting.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\Autoschool_MarkupCompile.lref
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\DbStructure.baml
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\DbStructure.g.cs
