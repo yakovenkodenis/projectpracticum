@@ -2,11 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Autoschool"
-        Title="Автошкола" Name="Ui" Height="462.064" Width="984.819" Background="#FF4D4D4D" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontFamily="HelveticaNeueCyr" Loaded="Window_Loaded">
+        Title="Автошкола" Name="Ui" Height="462.064" Width="984.819" Background="#FF4D4D4D" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" FontFamily="HelveticaNeueCyr" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
-        <Button Content="x" HorizontalAlignment="Left" Margin="956,-2,-1,0" VerticalAlignment="Top" Width="30" Height="30" Opacity="0.4" Click="ButtonWindowClose" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7"/>
+        <Button Content="x" HorizontalAlignment="Right" Margin="956,-2,0,0" VerticalAlignment="Top" Height="30" Opacity="0.4" Click="ButtonWindowClose" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7" Width="29" ToolTip="Выйти"/>
         <Button Content="_" HorizontalAlignment="Left" Margin="926,-2,0,0" VerticalAlignment="Top" Width="30" Height="30" Opacity="0.4" Click="ButtonWindowMinimize" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7"/>
-        <TabControl HorizontalAlignment="Left" Height="458" VerticalAlignment="Top" Width="985" Margin="0,10,0,0">
+        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Width="985" Height="452">
             <TabItem Header="Основная панель">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="SearchGrid" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Height="314" Width="959" ItemsSource="{Binding}" IsReadOnly="True" local:DataGridTextSearch.SearchValue="{Binding ElementName=TxtSearch, Path=Text, UpdateSourceTrigger=PropertyChanged}">
@@ -68,7 +68,7 @@
                         </FlowDocument>
                     </RichTextBox>
                     <Button Content="Query" HorizontalAlignment="Left" Margin="767,10,0,0" VerticalAlignment="Top" Width="202" Height="75" Cursor="Hand" Click="Button_Click" FontSize="20"/>
-                    <Button Content="Структура БД" HorizontalAlignment="Left" Margin="767,90,0,0" VerticalAlignment="Top" Width="202" Height="75" FontSize="20" Cursor="Hand"/>
+                    <Button Content="Структура БД" HorizontalAlignment="Left" Margin="767,90,0,0" VerticalAlignment="Top" Width="202" Height="75" FontSize="20" Cursor="Hand" Click="Button_Click_2"/>
                 </Grid>
             </TabItem>
         </TabControl>

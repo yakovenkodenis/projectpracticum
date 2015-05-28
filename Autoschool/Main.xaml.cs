@@ -72,7 +72,10 @@ namespace Autoschool
 
         private void InputQuery_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.Key != Key.Enter) return;
+            if ((!Keyboard.IsKeyDown(Key.RightCtrl) && !Keyboard.IsKeyDown(Key.LeftCtrl)) ||
+                !Keyboard.IsKeyDown(Key.Enter)) return;
             Button_Click(sender, e);
             e.Handled = true;
         }
@@ -191,20 +194,22 @@ namespace Autoschool
 
             const string schools = "SELECT id, name, contacts FROM autoschool;";
 
-            const string teachers =
+            var teachers =
                 "SELECT `teacher`.id, `teacher`.name, `teacher`.type, `teacher`.email, `teacher`.phone_number, `autoschool`.name AS 'autoschool' " +
-                "FROM `autoschool`, `teacher` WHERE `autoschool`.id = `teacher`.autoschool_id;";
+                "FROM `autoschool`, `teacher` WHERE `autoschool`.id = `teacher`.autoschool_id" +
+                (_isAdmin ? ";" : (" AND `autoschool`.name = '" + _currentAutoschool + "';"));
 
-            const string students =
+            var students =
                 "SELECT `student`.id, `student`.name, `student`.email, `group`.name AS 'group', `autoschool`.name AS 'autoschool' " +
-                "FROM `student`, `group`, `autoschool` WHERE `student`.group_id = `group`.id AND " +
+                "FROM `student`, `group`, `autoschool` WHERE `student`.group_id = `group`.id" +
+                (_isAdmin ? string.Empty : (" AND `autoschool`.name = '" + _currentAutoschool + "' AND ")) +
                 "`group`.autoschool_id = `autoschool`.id;";
 
             var lessons =
-                "SELECT DISTINCT teacher.name AS 'teacher', lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, " +
+                "SELECT DISTINCT teacher.name AS 'teacher', autoschool.name AS 'autoschool', lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, " +
                 "date.finish_time from lesson, teacher, date, autoschool " +
                 "WHERE date.id = lesson.date_id" +
-                (_isAdmin ? string.Empty : (" AND autoschool.name = '" + "Автодор" + "'")) +
+                (_isAdmin ? string.Empty : (" AND autoschool.name = '" + _currentAutoschool + "'")) +
                 " ORDER BY date.start_time;";
 
 
@@ -273,12 +278,49 @@ namespace Autoschool
             }
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            new DbStructure().Show();
+        }
+
+        readonly List<Key> _pressedKeys = new List<Key>();
+        private void InputQuery_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals(Key.Enter))
+            {
+                if (_pressedKeys.Contains(e.Key))
+                {
+                    Button_Click(sender, e);
+                    return;
+                }
+                _pressedKeys.Add(e.Key);
+                e.Handled = true;
+            }
+        }
+
+        private void InputQuery_KeyUp(object sender, KeyEventArgs e)
+        {
+            _pressedKeys.Remove(e.Key);
+            e.Handled = true;
+        }
+
+        private void InputQuery_LostFocus(object sender, RoutedEventArgs e)
+        {
+            _pressedKeys.Clear();
+        }
+
+
+
+
+
+
+
 
         // ===================== SYNTAX HIGHLIGHTING CODE ================== //
 
         private readonly List<Tag> _mTags = new List<Tag>();
 
-        private readonly List<char> _specials = new List<char> { '\n', '\r', '\t', ';' };
+        private readonly List<char> _specials = new List<char> {'\n', '\r', '\t', ';', '\''};
 
         private readonly List<string> _tags = new List<string>
         {
@@ -316,7 +358,8 @@ namespace Autoschool
             "PRINT",
             "DISTINCT",
             "LEFT",
-            "RIGHT"
+            "RIGHT",
+            "LIKE"
         };
 
         new struct Tag
@@ -430,6 +473,5 @@ namespace Autoschool
 
             InputQuery.TextChanged += InputQuery_TextChanged;
         }
-
     }
 }
