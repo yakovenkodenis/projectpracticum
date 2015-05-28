@@ -208,7 +208,7 @@ namespace Autoschool
             var lessons =
                 "SELECT DISTINCT teacher.name AS 'teacher', autoschool.name AS 'autoschool', lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, " +
                 "date.finish_time from lesson, teacher, date, autoschool " +
-                "WHERE date.id = lesson.date_id" +
+                "WHERE date.id = lesson.date_id AND autoschool.id = teacher.autoschool_id AND" +
                 (_isAdmin ? string.Empty : (" AND autoschool.name = '" + _currentAutoschool + "'")) +
                 " ORDER BY date.start_time;";
 
