@@ -1,13 +1,16 @@
 ﻿<Window x:Class="Autoschool.Main" Icon="logo.jpg"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:Autoschool"
-        Title="Автошкола" Name="Ui" Height="462.064" Width="984.819" Background="#FF4D4D4D" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" FontFamily="HelveticaNeueCyr" Loaded="Window_Loaded" ResizeMode="NoResize">
-    <Grid>
+        xmlns:local="clr-namespace:Autoschool" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        Title="Автошкола" Name="Ui" Height="461.564" Width="984.819" Background="#FF4D4D4D" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" FontFamily="HelveticaNeueCyr" Loaded="Window_Loaded" ResizeMode="NoResize"
+        DataContext="{Binding ElementName=Ui}">
+
+    <Grid RenderTransformOrigin="0.5,0.5">
         <Button Content="x" HorizontalAlignment="Right" Margin="956,-2,0,0" VerticalAlignment="Top" Height="30" Opacity="0.4" Click="ButtonWindowClose" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7" Width="29" ToolTip="Выйти"/>
         <Button Content="_" HorizontalAlignment="Left" Margin="926,-2,0,0" VerticalAlignment="Top" Width="30" Height="30" Opacity="0.4" Click="ButtonWindowMinimize" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7"/>
-        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Width="985" Height="452">
-            <TabItem Header="Основная панель">
+        <TabControl x:Name="Tabs" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Width="985" Height="452">
+            <TabItem x:Name="MainPanel" Header="Основная панель">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="SearchGrid" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Height="314" Width="959" ItemsSource="{Binding}" IsReadOnly="True" local:DataGridTextSearch.SearchValue="{Binding ElementName=TxtSearch, Path=Text, UpdateSourceTrigger=PropertyChanged}">
                         <DataGrid.Resources>
@@ -50,28 +53,35 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="SQL редактор">
+            <TabItem x:Name="SqlEditor" Header="SQL редактор">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="253" Width="959" ItemsSource="{Binding}" IsReadOnly="True">
-                        <DataGrid.RowStyle >
-                            <Style TargetType="DataGridRow">
-                                <Setter Property="FontSize" Value="18"/>
-                                <Setter Property="FontFamily" Value="Helvetica"/>
-                            </Style>
-                        </DataGrid.RowStyle>
-                    </DataGrid>
-                    <RichTextBox x:Name="InputQuery" HorizontalAlignment="Left" Height="155" Margin="10,10,0,0" VerticalAlignment="Top" Width="752" FontSize="38" TextChanged="InputQuery_TextChanged" PreviewKeyDown="InputQuery_PreviewKeyDown">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text="SELECT "/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
-                    <Button Content="Query" HorizontalAlignment="Left" Margin="767,10,0,0" VerticalAlignment="Top" Width="202" Height="75" Cursor="Hand" Click="Button_Click" FontSize="20"/>
-                    <Button Content="Структура БД" HorizontalAlignment="Left" Margin="767,90,0,0" VerticalAlignment="Top" Width="202" Height="75" FontSize="20" Cursor="Hand" Click="Button_Click_2"/>
+                    <!--The Visible StackPanel-->
+                    <StackPanel x:Name="MainQueryPanel" VerticalAlignment="Bottom" Orientation="Horizontal" Background="#FFE5E5E5">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="253" Width="959" ItemsSource="{Binding}" IsReadOnly="True" Panel.ZIndex="759">
+                                <DataGrid.RowStyle >
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="FontSize" Value="18"/>
+                                        <Setter Property="FontFamily" Value="Helvetica"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                            </DataGrid>
+                            <RichTextBox x:Name="InputQuery" HorizontalAlignment="Left" Height="155" Margin="10,10,0,0" VerticalAlignment="Top" Width="752" FontSize="38" TextChanged="InputQuery_TextChanged" PreviewKeyDown="InputQuery_PreviewKeyDown">
+                                <FlowDocument>
+                                    <Paragraph>
+                                        <Run Text="SELECT "/>
+                                    </Paragraph>
+                                </FlowDocument>
+                            </RichTextBox>
+                            <Button Content="Query" HorizontalAlignment="Left" Margin="767,10,0,0" VerticalAlignment="Top" Width="97" Height="48" Cursor="Hand" Click="Button_Click" FontSize="20"/>
+                            <Button Content="Структура БД" HorizontalAlignment="Left" Margin="767,63,0,0" VerticalAlignment="Top" Width="202" Height="47" FontSize="20" Cursor="Hand" Click="Button_Click_2"/>
+                            <!--This is the button that triggers animation-->
+                            <Button x:Name="BtnQueries" Content="Запросы" HorizontalAlignment="Left" Margin="869,10,0,0" VerticalAlignment="Top" Width="100" Height="48" FontSize="20" Cursor="Hand" Click="BtnQueries_Click"/>
+                            <Button Content="Сохранить запрос" HorizontalAlignment="Left" Margin="767,115,0,0" VerticalAlignment="Top" Width="202" Height="50" FontSize="20" Cursor="Hand" Click="Button_Click_3"/>
+                        </Grid>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Window>

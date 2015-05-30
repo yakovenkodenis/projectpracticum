@@ -11,13 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Media.Animation;
 using DotLiquid.Util;
 using PdfSharp.Pdf;
 using Spire.Pdf;
 using Spire.Pdf.Graphics;
+using Button = System.Windows.Forms.Button;
+using Control = System.Windows.Forms.Control;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using Label = System.Windows.Forms.Label;
+using MessageBox = System.Windows.MessageBox;
 using PdfDocument = Spire.Pdf.PdfDocument;
+using Size = System.Drawing.Size;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace Autoschool
 {
@@ -164,6 +174,8 @@ namespace Autoschool
         private DataTable Teachers;
         private DataTable Autoschools;
         private DataTable Lessons;
+
+
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ProgressBar.IsIndeterminate = true;
@@ -283,9 +295,10 @@ namespace Autoschool
             new DbStructure().Show();
         }
 
-
-
-
+        public async Task<ObservableCollection<Query>> GetQueries()
+        {
+            return await Task.Run(() => DatabaseModel.GetCachedQueriesList());
+        }
 
 
 
@@ -349,7 +362,7 @@ namespace Autoschool
 
             var text = Query;
 
-            for (int i = 0; i < text.Length; ++i)
+            for (var i = 0; i < text.Length; ++i)
             {
                 if (Char.IsWhiteSpace(text[i]) | GetSpecials(text[i]))
                 {
@@ -446,6 +459,95 @@ namespace Autoschool
             }
 
             InputQuery.TextChanged += InputQuery_TextChanged;
+        }
+
+        private async void BtnQueries_Click(object sender, RoutedEventArgs e)
+        {
+            new QueriesWindow(await GetQueries()).Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var value = "...";
+                var queryText = new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text;
+                if (InputBox("Сохранить запрос", "Имя запроса: ", ref value) != System.Windows.Forms.DialogResult.OK)
+                    return;
+                var connection = new MySqlConnection(DatabaseModel.ConnectionString);
+                connection.Open();
+                if (_isAdmin)
+                {
+                    const string query =
+                        "INSERT INTO `cached_queries` (query_name, query_text) VALUES (@query_name, @query_text);";
+                    var command = connection.CreateCommand();
+                    command.CommandText = query;
+                    command.Parameters.AddWithValue("@query_name", value);
+                    command.Parameters.AddWithValue("@query_text", queryText);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+                else
+                {
+                    const string query =
+                        "INSERT INTO `cached_queries` (query_name, query_text, autoschool) VALUES (@query_name, @query_text, @autoschool);";
+                    var command = connection.CreateCommand();
+                    command.CommandText = query;
+                    command.Parameters.AddWithValue("@query_name", value);
+                    command.Parameters.AddWithValue("@query_text", queryText);
+                    command.Parameters.AddWithValue("@autoschool", _currentAutoschool);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
+        }
+
+
+        public static DialogResult InputBox(string title, string promptText, ref string value)
+        {
+            var form = new Form();
+            var label = new Label();
+            var textBox = new TextBox();
+            var btnOk = new Button();
+            var btnCancel = new Button();
+
+            form.Text = title;
+            label.Text = promptText;
+            textBox.Text = value;
+
+            btnOk.Text = @"Сохранить";
+            btnCancel.Text = @"Отмена";
+            btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+
+            label.SetBounds(9, 20, 372, 13);
+            textBox.SetBounds(12, 36, 372, 20);
+            btnOk.SetBounds(228,72,75,23);
+            btnCancel.SetBounds(309, 72, 75, 23);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            btnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 107);
+            form.Controls.AddRange(new Control[] {label, textBox, btnOk, btnCancel});
+            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = btnOk;
+            form.CancelButton = btnCancel;
+
+            var dialogResult = form.ShowDialog();
+            value = textBox.Text;
+            return dialogResult;
         }
     }
 }

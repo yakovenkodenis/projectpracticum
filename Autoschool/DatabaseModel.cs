@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using MySql.Data.MySqlClient;
 
@@ -98,6 +100,33 @@ namespace Autoschool
                 command.Parameters.AddWithValue("@contacts", school.Contacts);
                 await command.ExecuteNonQueryAsync();
             }
+        }
+
+        public static ObservableCollection<Query> GetCachedQueriesList()
+        {
+            var queries = new ObservableCollection<Query>();
+
+            var connection = new MySqlConnection(ConnectionString);
+            connection.Open();
+
+            const string sql = "SELECT * FROM cached_queries;";
+
+            var cmd = new MySqlCommand(sql, connection);
+
+            var reader = cmd.ExecuteReader();
+            cmd.CommandType = CommandType.Text;
+            while (reader.Read())
+            {
+                queries.Add(new Query
+                {
+                    Id = reader["id"].ToString(),
+                    Name = reader["query_name"].ToString(),
+                    Text = reader["query_text"].ToString(),
+                    Autoschool = reader["autoschool"].ToString()
+                });
+            }
+            connection.Close();
+            return queries;
         }
 
         private async static void FillTeacher()

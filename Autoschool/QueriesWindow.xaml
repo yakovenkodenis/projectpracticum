@@ -1,0 +1,19 @@
+﻿<Window x:Class="Autoschool.QueriesWindow" x:Name="QMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        Title="Сохранённые запросы" Height="300" Width="490.426" DataContext="{Binding ElementName=QMain}" Icon="logo.jpg" ResizeMode="NoResize" ShowInTaskbar="False" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" FontFamily="HelveticaNeueCyr">
+    <Grid>
+        <ListBox x:Name="LstQueries" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="482" FontFamily="HelveticaNeueCyr" FontSize="16" ItemsSource="{Binding Queries}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Name}" FontWeight="Medium" FontSize="18" FontFamily="Helvetica"/>
+                        <TextBlock Text="{Binding Text}" FontSize="16" FontFamily="Helvetica"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
