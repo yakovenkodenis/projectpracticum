@@ -27,5 +27,10 @@ namespace Autoschool
             dynamic query = LstQueries.SelectedItem as dynamic;
             if (RaiseQueryEvent != null) RaiseQueryEvent(this, new QueryEventArgs(query.Text));
         }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
