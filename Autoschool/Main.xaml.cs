@@ -92,6 +92,7 @@ namespace Autoschool
                 ProgressBar.IsIndeterminate = true;
                 await Task.Run(() => DatabaseModel.SeedDatabase());
                 await Task.Run(() => GetSearchGridTable());
+                await Task.Run(() => FillStatisticsList());
 
                 ProgressBar.IsIndeterminate = false;
 
@@ -141,7 +142,7 @@ namespace Autoschool
                 var sql = Query;
                 if (sql.Split(' ')
                     .Select(x => x.ToUpper())
-                    .Intersect(new[] {"INSERT", "UPDATE", "DROP", "DELETE", "TRUNCATE"})
+                    .Intersect(new[] {"INSERT", "UPDATE", "DROP", "DELETE", "TRUNCATE", "ALTER"})
                     .Any())
                 {
                     throw new InvalidOperationException("Данная команда запрещена!");
@@ -202,6 +203,10 @@ namespace Autoschool
         {
             ProgressBar.IsIndeterminate = true;
             await Task.Run(() => GetSearchGridTable());
+            if (_isAdmin)
+            {
+                await Task.Run(() => FillStatisticsList());
+            }
             ProgressBar.IsIndeterminate = false;
 
             if (_isAdmin)
@@ -220,6 +225,64 @@ namespace Autoschool
             CriteriaSearch.FontSize = 16d;
             CriteriaSearch.VerticalContentAlignment = VerticalAlignment.Center;
             CriteriaSearch.ItemsSource = _criteriaSearch;
+
+            TxtDescription.Content += " Для просмотра\nопределённых статистических данных выберите в меню\n" +
+                                      "слева один из элементов списка. Добавить " +
+                                      "статистическую\nвыборку можно на панели SQL редактора,\n при сохранении " +
+                                      "запроса отметив, что он относится к статистике.";
+        }
+
+        public ObservableCollection<Query> StatisticsQueries
+        {
+            get { return FillStatisticsList(); }
+        }
+
+        private static ObservableCollection<Query> FillStatisticsList()
+        {
+            const string statsQuery = "SELECT * FROM cached_queries WHERE is_statistics IS TRUE;";
+            var connection = new MySqlConnection(DatabaseModel.ConnectionString);
+            connection.Open();
+
+            var cmd = new MySqlCommand(statsQuery, connection);
+
+            cmd.ExecuteNonQuery();
+            var reader = cmd.ExecuteReader();
+            cmd.CommandType = CommandType.Text;
+
+            var stats = new ObservableCollection<Query>();
+
+            while (reader.Read())
+            {
+                stats.Add(new Query
+                {
+                    Id = reader["id"].ToString(),
+                    Autoschool = reader["autoschool"].ToString(),
+                    IsStatistics = reader["is_statistics"].ToString(),
+                    Name = reader["query_name"].ToString(),
+                    Text = reader["query_text"].ToString()
+                });
+            }
+            connection.Close();
+            return stats;
+        }
+
+        public void FillStatisticsGrid(object sender, MouseButtonEventArgs e)
+        {
+            if (LstStat.SelectedIndex < 0) return;
+            var currentItem = LstStat.SelectedItem as dynamic;
+            using (var connection = new MySqlConnection(DatabaseModel.ConnectionString))
+            {
+                connection.Open();
+                using (var cmd = new MySqlCommand(currentItem.Text, connection))
+                {
+                    var dt = new DataTable();
+                    var adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    GridStatistics.DataContext = dt;
+                    //GridStatistics.InvalidateVisual();
+                }
+                connection.Close();
+            }
         }
 
         private void GetSearchGridTable()
@@ -244,7 +307,7 @@ namespace Autoschool
                 "date.finish_time FROM lesson, teacher, date, autoschool " +
                 "WHERE date.id = lesson.date_id AND autoschool.id = teacher.autoschool_id " +
                 (_isAdmin ? string.Empty : (" AND autoschool.name = '" + _currentAutoschool + "'")) +
-                " ORDER BY date.start_time;";
+                " GROUP BY teacher.name, autoschool.name, lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, date.finish_time ORDER BY date.start_time;";
 
 
 
@@ -393,26 +456,24 @@ namespace Autoschool
 
             for (var i = 0; i < text.Length; ++i)
             {
-                if (Char.IsWhiteSpace(text[i]) | GetSpecials(text[i]))
+                if (!(Char.IsWhiteSpace(text[i]) | GetSpecials(text[i]))) continue;
+                if (i > 0 && !(Char.IsWhiteSpace(text[i - 1]) | GetSpecials(text[i - 1])))
                 {
-                    if (i > 0 && !(Char.IsWhiteSpace(text[i - 1]) | GetSpecials(text[i - 1])))
+                    var eIndex = i - 1;
+                    var word = text.Substring(sIndex, eIndex - sIndex + 1);
+                    if (IsKnownTag(word))
                     {
-                        var eIndex = i - 1;
-                        var word = text.Substring(sIndex, eIndex - sIndex + 1);
-                        if (IsKnownTag(word))
+                        var t = new Tag
                         {
-                            var t = new Tag
-                            {
-                                StartPosition = run.ContentStart.GetPositionAtOffset(sIndex, LogicalDirection.Forward),
-                                EndPosition =
-                                    run.ContentStart.GetPositionAtOffset(eIndex + 1, LogicalDirection.Backward),
-                                Word = word
-                            };
-                            _mTags.Add(t);
-                        }
+                            StartPosition = run.ContentStart.GetPositionAtOffset(sIndex, LogicalDirection.Forward),
+                            EndPosition =
+                                run.ContentStart.GetPositionAtOffset(eIndex + 1, LogicalDirection.Backward),
+                            Word = word
+                        };
+                        _mTags.Add(t);
                     }
-                    sIndex = i + 1;
                 }
+                sIndex = i + 1;
             }
 
             var lastWord = text.Substring(sIndex, text.Length - sIndex);
@@ -593,6 +654,68 @@ namespace Autoschool
             value = textBox.Text;
             isChecked = checkBox.Checked;
             return dialogResult;
+        }
+
+        private void LstStat_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (LstStat.SelectedItem == null || LstStat.SelectedIndex < 0)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void LstStat_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (LstStat.SelectedItem == null || LstStat.SelectedIndex < 0)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Ui_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //e.Handled = true;
+        }
+
+        private void Ui_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //e.Handled = true;
+        }
+
+        public DataTable StatisticsDataTable { get; private set; }
+
+        private void LstStat_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (LstStat.SelectedIndex < 0) return;
+            var item = LstStat.SelectedItem as Query;
+            using (var connection = new MySqlConnection(DatabaseModel.ConnectionString))
+            {
+                connection.Open();
+                if (item != null)
+                    using (var cmd = new MySqlCommand(item.Text, connection))
+                    {
+                        var dt = new DataTable();
+                        var adapter = new MySqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                        //GridStatistics.DataContext = dt;
+                        StatisticsDataTable = dt;
+                        GridStatistics.DataContext = StatisticsDataTable;
+                        //TODO IMPROVE STUFF
+                    }
+                connection.Close();
+            }
+            e.Handled = true;
+        }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (LstStat.SelectedIndex >= 0)
+            {
+                dynamic item = LstStat.SelectedItem as dynamic;
+                MessageBox.Show(item.Text);
+                e.Handled = true;
+            }
+            e.Handled = true;
         }
     }
 }

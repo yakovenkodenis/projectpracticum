@@ -1,8 +1,5 @@
 ﻿
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Autoschool.Annotations;
-
 namespace Autoschool
 {
     public class Query : INotifyPropertyChanged
@@ -11,6 +8,7 @@ namespace Autoschool
         private string _name;
         private string _text;
         private string _autoschool;
+        private string _isStatistics;
 
         public string Id
         {
@@ -56,6 +54,17 @@ namespace Autoschool
             }
         }
 
+        public string IsStatistics
+        {
+            get { return _isStatistics; }
+            set
+            {
+                if (value == _isStatistics) return;
+                _isStatistics = value;
+                NotifyPropertyChanged("IsStatistics");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(string info)
@@ -65,6 +74,11 @@ namespace Autoschool
             {
                 cached(this, new PropertyChangedEventArgs(info));
             }
+        }
+
+        public override string ToString()
+        {
+            return "Id: " + Id + "\tName: " + Name + "\tAutoschool: " + Autoschool + "\tIsStat: " + "\nText: " + Text;
         }
     }
 }

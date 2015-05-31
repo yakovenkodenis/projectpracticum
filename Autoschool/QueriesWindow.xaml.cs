@@ -20,7 +20,7 @@ namespace Autoschool
         private void LstQueries_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (LstQueries.SelectedIndex < 0) return;
-            dynamic query = LstQueries.SelectedItem as dynamic;
+            var query = LstQueries.SelectedItem as dynamic;
             if (RaiseQueryEvent != null) RaiseQueryEvent(this, new QueryEventArgs(query.Text));
         }
 

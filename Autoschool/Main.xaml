@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:Autoschool" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         Title="Автошкола" Name="Ui" Height="461.564" Width="984.819" Background="#FF4D4D4D" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" FontFamily="HelveticaNeueCyr" Loaded="Window_Loaded" ResizeMode="NoResize"
-        DataContext="{Binding ElementName=Ui}">
+        DataContext="{Binding ElementName=Ui}" PreviewMouseRightButtonDown="Ui_PreviewMouseRightButtonDown" PreviewMouseRightButtonUp="Ui_PreviewMouseRightButtonUp">
 
     <Grid RenderTransformOrigin="0.5,0.5">
         <Button Content="x" HorizontalAlignment="Right" Margin="956,-2,0,0" VerticalAlignment="Top" Height="30" Opacity="0.4" Click="ButtonWindowClose" TextOptions.TextHintingMode="Animated" Cursor="Hand" Panel.ZIndex="7" Width="29" ToolTip="Выйти"/>
@@ -84,9 +84,22 @@
             </TabItem>
             <TabItem x:Name="Statistics" Header="Статистика">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="GridStatistics" Margin="0,144,0,0"/>
-                    <Label x:Name="TxtDescription" Content="Панель статистики." HorizontalAlignment="Left" Margin="345,10,0,0" VerticalAlignment="Top" Height="129" Width="624" FontSize="22"/>
-                    <ListBox x:Name="LstStat" HorizontalAlignment="Left" Height="129" Margin="10,10,0,0" VerticalAlignment="Top" Width="330" FontSize="16"/>
+                    <DataGrid x:Name="GridStatistics" Margin="10,144,10,10" ItemsSource="{Binding}" IsReadOnly="True"/>
+                    <Label x:Name="TxtDescription" Content="Добро пожаловать на панель статистики. " HorizontalAlignment="Left" Margin="345,10,0,0" VerticalAlignment="Top" Height="129" Width="624" FontSize="18"/>
+                    <ListBox x:Name="LstStat" HorizontalAlignment="Left" Height="129" Margin="10,10,0,0" 
+                             VerticalAlignment="Top" Width="330" FontSize="16"
+                             ItemsSource="{Binding StatisticsQueries}" Cursor="Arrow" PreviewMouseRightButtonDown="LstStat_PreviewMouseRightButtonDown" PreviewMouseRightButtonUp="LstStat_PreviewMouseRightButtonUp" MouseDoubleClick="LstStat_MouseDoubleClick">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Path=Name}" FontWeight="Medium" FontSize="18" FontFamily="HelveticaNeueCyr"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Показать код" Click="MenuItem_OnClick" />
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
                 </Grid>
             </TabItem>
         </TabControl>
