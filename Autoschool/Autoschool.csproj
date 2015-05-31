@@ -95,10 +95,15 @@
     <Compile Include="DbStructure.xaml.cs">
       <DependentUpon>DbStructure.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditQuery.xaml.cs">
+      <DependentUpon>EditQuery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditQueryEventArgs.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="InternetConnection.cs" />
     <Compile Include="Lesson.cs" />
     <Compile Include="Practice.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="QueriesWindow.xaml.cs">
       <DependentUpon>QueriesWindow.xaml</DependentUpon>
     </Compile>
@@ -116,6 +121,10 @@
     <Compile Include="Model.cs" />
     <Compile Include="WebsiteModel.cs" />
     <Page Include="DbStructure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditQuery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

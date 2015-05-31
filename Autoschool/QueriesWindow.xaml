@@ -9,8 +9,8 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Label Content="{Binding Name}" FontWeight="Medium" FontSize="18" FontFamily="Helvetica"/>
-                        <TextBlock Text="{Binding Text}" FontSize="16" FontFamily="Helvetica"/>
+                        <Label Content="{Binding Name, Mode=TwoWay}" FontWeight="Medium" FontSize="18" FontFamily="Helvetica"/>
+                        <TextBlock Text="{Binding Text, Mode=TwoWay}" FontSize="16" FontFamily="Helvetica"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

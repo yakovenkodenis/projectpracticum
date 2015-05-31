@@ -37,3 +37,5 @@ D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\QueriesWindow.g.cs
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Gios Pdf.NET.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ICSharpCode.SharpZipLib.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Gios Pdf.NET.pdb
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\EditQuery.baml
+D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\EditQuery.g.cs
