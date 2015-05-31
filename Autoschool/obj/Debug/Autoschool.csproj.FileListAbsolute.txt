@@ -34,3 +34,6 @@ D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\DbStructure.baml
 D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\DbStructure.g.cs
 D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\QueriesWindow.baml
 D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\QueriesWindow.g.cs
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Gios Pdf.NET.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Gios Pdf.NET.pdb

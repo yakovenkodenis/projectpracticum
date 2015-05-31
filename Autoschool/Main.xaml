@@ -82,6 +82,11 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <TabItem x:Name="Statistics" Header="Статистика">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="GridStatistics" Margin="0,144,0,0"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

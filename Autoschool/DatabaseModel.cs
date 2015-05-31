@@ -131,7 +131,7 @@ namespace Autoschool
 
         private async static void FillTeacher()
         {
-            var theoryTeachersIds = WebsiteModel.GetTheory().Select(t => t.TheoryId).ToList();
+            var theoryTeachersIds = WebsiteModel.GetTheory().Select(t => t.TeacherId).ToList();
             foreach (var user in WebsiteModel.GetUser().Where(t => t.Role.Equals("teacher")))
             {
                 const string query =

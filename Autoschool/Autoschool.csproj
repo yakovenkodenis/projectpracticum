@@ -40,6 +40,12 @@
     <Reference Include="DotLiquid.ViewEngine">
       <HintPath>..\packages\DotLiquid.ViewEngine.0.2\lib\DotLiquid.ViewEngine.dll</HintPath>
     </Reference>
+    <Reference Include="Gios Pdf.NET">
+      <HintPath>..\..\Gios Pdf.NET library\Gios Pdf.NET\bin\Debug\Gios Pdf.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\Gios Pdf.NET library\Gios Pdf.NET\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -97,6 +103,7 @@
       <DependentUpon>QueriesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Query.cs" />
+    <Compile Include="QueryEventArgs.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleStudent.cs" />
     <Compile Include="SearchValueConverter.cs" />

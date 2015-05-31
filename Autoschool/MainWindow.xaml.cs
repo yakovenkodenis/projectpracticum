@@ -36,10 +36,16 @@ namespace Autoschool
             {
                 if (Authenticate(txtLogin.Text, txtPassword.Password))
                 {
-                    
-                    _currentAutoschool = _currentUser.Role.Equals("moderator")
-                        ? WebsiteModel.GetAutoschoolByUser(_currentUser)
-                        : string.Empty;
+                    try
+                    {
+                        _currentAutoschool = _currentUser.Role.Equals("moderator")
+                            ? WebsiteModel.GetAutoschoolByUser(_currentUser)
+                            : string.Empty;
+                    }
+                    catch
+                    {
+                        _currentAutoschool = string.Empty;
+                    }
                     new Main(_currentUser, _currentAutoschool).Show();
                     Close();
                     if (_currentUser.Role.Equals("administrator"))

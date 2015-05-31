@@ -11,13 +11,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Media.Animation;
+using DotLiquid;
 using DotLiquid.Util;
 using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 using Spire.Pdf;
 using Spire.Pdf.Graphics;
 using Button = System.Windows.Forms.Button;
@@ -45,6 +45,27 @@ namespace Autoschool
             _currentUser = user;
             _currentAutoschool = autoschool;
             _isAdmin = _currentUser.Role.Equals("administrator");
+            if (!_isAdmin)
+            {
+                Statistics.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void TriggerQueryEvent(object sender, QueryEventArgs e)
+        {
+            InputQuery.Document.Blocks.Clear();
+            InputQuery.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
+            using (var connection = new MySqlConnection(DatabaseModel.ConnectionString))
+            {
+                connection.Open();
+                using (var cmd = new MySqlCommand(e.Message, connection))
+                {
+                    var dt = new DataTable();
+                    var adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    DataGrid.DataContext = dt;
+                }
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -213,14 +234,14 @@ namespace Autoschool
 
             var students =
                 "SELECT `student`.id, `student`.name, `student`.email, `group`.name AS 'group', `autoschool`.name AS 'autoschool' " +
-                "FROM `student`, `group`, `autoschool` WHERE `student`.group_id = `group`.id" +
-                (_isAdmin ? string.Empty : (" AND `autoschool`.name = '" + _currentAutoschool + "' AND ")) +
-                "`group`.autoschool_id = `autoschool`.id;";
+                "FROM `student`, `group`, `autoschool` WHERE `student`.group_id = `group`.id AND " +
+                "`group`.autoschool_id = `autoschool`.id" +
+                (_isAdmin ? ";" : (" AND `autoschool`.name = '" + _currentAutoschool + "';"));
 
             var lessons =
                 "SELECT DISTINCT teacher.name AS 'teacher', autoschool.name AS 'autoschool', lesson.room, lesson.meet_point, lesson.is_reserved, date.day, date.start_time, " +
                 "date.finish_time FROM lesson, teacher, date, autoschool " +
-                "WHERE date.id = lesson.date_id AND autoschool.id = teacher.autoschool_id" +
+                "WHERE date.id = lesson.date_id AND autoschool.id = teacher.autoschool_id " +
                 (_isAdmin ? string.Empty : (" AND autoschool.name = '" + _currentAutoschool + "'")) +
                 " ORDER BY date.start_time;";
 
@@ -307,7 +328,7 @@ namespace Autoschool
 
         private readonly List<Tag> _mTags = new List<Tag>();
 
-        private readonly List<char> _specials = new List<char> {'\n', '\r', '\t', ';'};
+        private readonly List<char> _specials = new List<char> {'\n', '\r', '\t', ';', '(', ')'};
 
         private readonly List<string> _tags = new List<string>
         {
@@ -323,7 +344,7 @@ namespace Autoschool
             "INNER",
             "OUTER",
             "NATURAL",
-            "FULL",
+            "NULL",
             "ON",
             "HAVING",
             "GROUP",
@@ -346,7 +367,14 @@ namespace Autoschool
             "DISTINCT",
             "LEFT",
             "RIGHT",
-            "LIKE"
+            "LIKE",
+            "CASE",
+            "WHEN",
+            "IF",
+            "ELSE",
+            "COUNT",
+            "END",
+            "THEN"
         };
 
         new struct Tag
@@ -463,7 +491,10 @@ namespace Autoschool
 
         private async void BtnQueries_Click(object sender, RoutedEventArgs e)
         {
-            new QueriesWindow(await GetQueries()).Show();
+            var queriesWin = new QueriesWindow(await GetQueries());
+            queriesWin.RaiseQueryEvent += TriggerQueryEvent;
+            queriesWin.Show();
+            
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
