@@ -14,19 +14,30 @@ using System.Windows.Shapes;
 
 namespace Autoschool
 {
-    /// <summary>
-    /// Interaction logic for EditQuery.xaml
-    /// </summary>
+
     public partial class EditQuery : Window
     {
-        public EditQuery()
+        public Query SelectedItem { get; set; }
+
+        public EditQuery(Query query)
         {
+            SelectedItem = query;
             InitializeComponent();
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditQueryWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

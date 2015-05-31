@@ -39,3 +39,25 @@ D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ICSharpCode.SharpZipLib.dl
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Gios Pdf.NET.pdb
 D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\EditQuery.baml
 D:\Visual Studio 2013\Autoschool\Autoschool\obj\Debug\EditQuery.g.cs
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\Microsoft.Expression.Interactions.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\System.Windows.Interactivity.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\de\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\en\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\es\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\fr\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\it\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ja\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ko\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ru\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\zh-Hans\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\zh-Hant\Microsoft.Expression.Interactions.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\de\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\en\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\es\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\it\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll

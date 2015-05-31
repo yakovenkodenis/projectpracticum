@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Interactivity;
 using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
 
@@ -30,7 +31,7 @@ namespace Autoschool
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            new EditQuery(LstQueries.SelectedItem as Query).ShowDialog();
         }
     }
 }

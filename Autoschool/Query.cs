@@ -60,9 +60,10 @@ namespace Autoschool
 
         private void NotifyPropertyChanged(string info)
         {
-            if (PropertyChanged != null)
+            var cached = PropertyChanged;
+            if (null != cached)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
+                cached(this, new PropertyChangedEventArgs(info));
             }
         }
     }
