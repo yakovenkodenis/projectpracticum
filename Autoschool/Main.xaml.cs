@@ -697,10 +697,8 @@ namespace Autoschool
                         var dt = new DataTable();
                         var adapter = new MySqlDataAdapter(cmd);
                         adapter.Fill(dt);
-                        //GridStatistics.DataContext = dt;
                         StatisticsDataTable = dt;
                         GridStatistics.DataContext = StatisticsDataTable;
-                        //TODO IMPROVE STUFF
                     }
                 connection.Close();
             }

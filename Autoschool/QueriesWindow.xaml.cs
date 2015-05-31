@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using MySql.Data.MySqlClient;
 
 namespace Autoschool
 {
@@ -29,6 +31,30 @@ namespace Autoschool
             try
             {
                 new EditQuery(LstQueries.SelectedItem as Query).ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
+        }
+
+        private async void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var connection = new MySqlConnection(DatabaseModel.ConnectionString))
+                {
+                    connection.Open();
+                    const string query =
+                        @"DELETE FROM `cached_queries` WHERE id = @id;";
+                    var command = connection.CreateCommand();
+                    command.CommandText = query;
+                    var item = LstQueries.SelectedItem as Query;
+                    if (item != null)
+                        command.Parameters.AddWithValue("@id", item.Id);
+                    await command.ExecuteNonQueryAsync();
+                }
+                Queries.RemoveAt(LstQueries.SelectedIndex);
             }
             catch (Exception ex)
             {
