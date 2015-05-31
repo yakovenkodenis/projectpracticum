@@ -85,6 +85,8 @@
             <TabItem x:Name="Statistics" Header="Статистика">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="GridStatistics" Margin="0,144,0,0"/>
+                    <Label x:Name="TxtDescription" Content="Панель статистики." HorizontalAlignment="Left" Margin="345,10,0,0" VerticalAlignment="Top" Height="129" Width="624" FontSize="22"/>
+                    <ListBox x:Name="LstStat" HorizontalAlignment="Left" Height="129" Margin="10,10,0,0" VerticalAlignment="Top" Width="330" FontSize="16"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Сохранённые запросы" Height="300" Width="490.426" DataContext="{Binding ElementName=QMain}" Icon="logo.jpg" ResizeMode="NoResize" ShowInTaskbar="False" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" FontFamily="HelveticaNeueCyr">
+        Title="Сохранённые запросы" Height="300" Width="490.426" DataContext="{Binding ElementName=QMain}" Icon="logo.jpg" ResizeMode="NoResize" ShowInTaskbar="False" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" FontFamily="HelveticaNeueCyr" WindowStyle="ToolWindow">
     <Grid>
         <ListBox x:Name="LstQueries" HorizontalAlignment="Left" Height="271" VerticalAlignment="Top" Width="482" FontFamily="HelveticaNeueCyr" FontSize="16" ItemsSource="{Binding Queries}" MouseDoubleClick="LstQueries_MouseDoubleClick">
             <ListBox.ItemTemplate>

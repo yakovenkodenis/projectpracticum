@@ -21,6 +21,7 @@ using PdfSharp.Pdf.IO;
 using Spire.Pdf;
 using Spire.Pdf.Graphics;
 using Button = System.Windows.Forms.Button;
+using CheckBox = System.Windows.Forms.CheckBox;
 using Control = System.Windows.Forms.Control;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using Label = System.Windows.Forms.Label;
@@ -502,8 +503,9 @@ namespace Autoschool
             try
             {
                 var value = "...";
+                bool isChecked;
                 var queryText = new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text;
-                if (InputBox("Сохранить запрос", "Имя запроса: ", ref value) != System.Windows.Forms.DialogResult.OK)
+                if (InputBox("Сохранить запрос", "Имя запроса: ", ref value, out isChecked) != System.Windows.Forms.DialogResult.OK)
                     return;
                 var connection = new MySqlConnection(DatabaseModel.ConnectionString);
                 connection.Open();
@@ -539,18 +541,22 @@ namespace Autoschool
         }
 
 
-        public static DialogResult InputBox(string title, string promptText, ref string value)
+        public static DialogResult InputBox(string title, string promptText, ref string value, out bool isChecked)
         {
             var form = new Form();
             var label = new Label();
             var textBox = new TextBox();
             var btnOk = new Button();
             var btnCancel = new Button();
+            var checkBox = new CheckBox();
 
+            form.Font = new Font("HelveticaNeueCyr", form.Font.Size + 2, System.Drawing.FontStyle.Regular);
             form.Text = title;
             label.Text = promptText;
             textBox.Text = value;
+            checkBox.Checked = false;
 
+            checkBox.Text = @"Статистика";
             btnOk.Text = @"Сохранить";
             btnCancel.Text = @"Отмена";
             btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -558,16 +564,19 @@ namespace Autoschool
 
             label.SetBounds(9, 20, 372, 13);
             textBox.SetBounds(12, 36, 372, 20);
+            checkBox.SetBounds(12, 42, 372, 13);
             btnOk.SetBounds(228,72,75,23);
             btnCancel.SetBounds(309, 72, 75, 23);
 
             label.AutoSize = true;
+            checkBox.Anchor = checkBox.Anchor | AnchorStyles.Right;
             textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
             btnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
-            form.ClientSize = new Size(396, 107);
-            form.Controls.AddRange(new Control[] {label, textBox, btnOk, btnCancel});
+            //form.ClientSize = new Size(396, 107);
+            form.ClientSize = new Size(396, 127);
+            form.Controls.AddRange(new Control[] {label, textBox, checkBox, btnOk, btnCancel});
             form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;
@@ -578,6 +587,7 @@ namespace Autoschool
 
             var dialogResult = form.ShowDialog();
             value = textBox.Text;
+            isChecked = checkBox.Checked;
             return dialogResult;
         }
     }
