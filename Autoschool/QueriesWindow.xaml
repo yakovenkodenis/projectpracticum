@@ -18,7 +18,7 @@
             </ListBox.ItemTemplate>
             <ListBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Edit" Click="BtnEdit_Click"/>
+                    <MenuItem Header="Редактировать" Click="BtnEdit_Click"/>
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>

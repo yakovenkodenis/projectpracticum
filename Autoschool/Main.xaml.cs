@@ -316,9 +316,9 @@ namespace Autoschool
             new DbStructure().Show();
         }
 
-        public async Task<ObservableCollection<Query>> GetQueries()
+        public async Task<ObservableCollection<Query>> GetQueries(string autoschool)
         {
-            return await Task.Run(() => DatabaseModel.GetCachedQueriesList());
+            return await Task.Run(() => DatabaseModel.GetCachedQueriesList(autoschool, _isAdmin));
         }
 
 
@@ -491,7 +491,7 @@ namespace Autoschool
 
         private async void BtnQueries_Click(object sender, RoutedEventArgs e)
         {
-            var queriesWin = new QueriesWindow(await GetQueries());
+            var queriesWin = new QueriesWindow(await GetQueries(_currentAutoschool));
             queriesWin.RaiseQueryEvent += TriggerQueryEvent;
             queriesWin.Show();
             

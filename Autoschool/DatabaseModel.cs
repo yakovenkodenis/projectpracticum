@@ -102,14 +102,19 @@ namespace Autoschool
             }
         }
 
-        public static ObservableCollection<Query> GetCachedQueriesList()
+        public static ObservableCollection<Query> GetCachedQueriesList(string autoschool, bool isAdmin)
         {
             var queries = new ObservableCollection<Query>();
 
             var connection = new MySqlConnection(ConnectionString);
             connection.Open();
 
-            const string sql = "SELECT * FROM cached_queries;";
+            var sql = "SELECT * FROM cached_queries;";
+            if (!isAdmin)
+            {
+                sql = "SELECT * FROM cached_queries WHERE autoschool = '" + autoschool + "';";
+            }
+                
 
             var cmd = new MySqlCommand(sql, connection);
 
