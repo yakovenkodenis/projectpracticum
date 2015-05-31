@@ -494,7 +494,7 @@ namespace Autoschool
         {
             var queriesWin = new QueriesWindow(await GetQueries(_currentAutoschool));
             queriesWin.RaiseQueryEvent += TriggerQueryEvent;
-            queriesWin.Show();
+            queriesWin.ShowDialog();
             
         }
 
@@ -505,18 +505,19 @@ namespace Autoschool
                 var value = "...";
                 bool isChecked;
                 var queryText = new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text;
-                if (InputBox("Сохранить запрос", "Имя запроса: ", ref value, out isChecked) != System.Windows.Forms.DialogResult.OK)
+                if (InputBox("Сохранить запрос", "Имя запроса: ", ref value, out isChecked, _isAdmin) != System.Windows.Forms.DialogResult.OK)
                     return;
                 var connection = new MySqlConnection(DatabaseModel.ConnectionString);
                 connection.Open();
                 if (_isAdmin)
                 {
                     const string query =
-                        "INSERT INTO `cached_queries` (query_name, query_text) VALUES (@query_name, @query_text);";
+                        "INSERT INTO `cached_queries` (query_name, query_text, is_statistics) VALUES (@query_name, @query_text, @is_stat);";
                     var command = connection.CreateCommand();
                     command.CommandText = query;
                     command.Parameters.AddWithValue("@query_name", value);
                     command.Parameters.AddWithValue("@query_text", queryText);
+                    command.Parameters.AddWithValue("@query_text", isChecked);
                     command.ExecuteNonQuery();
                     command.Dispose();
                 }
@@ -541,7 +542,7 @@ namespace Autoschool
         }
 
 
-        public static DialogResult InputBox(string title, string promptText, ref string value, out bool isChecked)
+        public static DialogResult InputBox(string title, string promptText, ref string value, out bool isChecked, bool isAdmin)
         {
             var form = new Form();
             var label = new Label();
@@ -550,7 +551,6 @@ namespace Autoschool
             var btnCancel = new Button();
             var checkBox = new CheckBox();
 
-            form.Font = new Font("HelveticaNeueCyr", form.Font.Size + 2, System.Drawing.FontStyle.Regular);
             form.Text = title;
             label.Text = promptText;
             textBox.Text = value;
@@ -562,11 +562,16 @@ namespace Autoschool
             btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 
+            
+            var height = isAdmin ? 117 : 97;
+            var buttonsY = isAdmin ? 82 : 62;
+            checkBox.Visible = isAdmin;
+
             label.SetBounds(9, 20, 372, 13);
             textBox.SetBounds(12, 36, 372, 20);
-            checkBox.SetBounds(12, 42, 372, 13);
-            btnOk.SetBounds(228,72,75,23);
-            btnCancel.SetBounds(309, 72, 75, 23);
+            checkBox.SetBounds(12, 62, 372, 13);
+            btnOk.SetBounds(228,buttonsY,75,23);
+            btnCancel.SetBounds(309, buttonsY, 75, 23);
 
             label.AutoSize = true;
             checkBox.Anchor = checkBox.Anchor | AnchorStyles.Right;
@@ -574,8 +579,7 @@ namespace Autoschool
             btnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
-            //form.ClientSize = new Size(396, 107);
-            form.ClientSize = new Size(396, 127);
+            form.ClientSize = new Size(396, height);
             form.Controls.AddRange(new Control[] {label, textBox, checkBox, btnOk, btnCancel});
             form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
