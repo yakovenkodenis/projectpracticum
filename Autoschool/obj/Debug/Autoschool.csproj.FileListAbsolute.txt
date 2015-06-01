@@ -61,3 +61,7 @@ D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ko\System.Windows.Interact
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.pdfa.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.xtra.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.xml

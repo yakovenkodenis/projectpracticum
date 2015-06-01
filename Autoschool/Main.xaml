@@ -34,7 +34,7 @@
                         <DataGrid.RowStyle>
                             <Style TargetType="{x:Type DataGridRow}">
                                 <Setter Property="FontSize" Value="18"/>
-                                <Setter Property="FontFamily" Value="Helvetica"/>
+                                <Setter Property="FontFamily" Value="HelveticaNeueCyr"/>
                             </Style>
                         </DataGrid.RowStyle>
                     </DataGrid>

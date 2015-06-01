@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,23 +9,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
-using System.Drawing;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DotLiquid;
-using DotLiquid.Util;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
-using Spire.Pdf;
-using Spire.Pdf.Graphics;
 using Button = System.Windows.Forms.Button;
 using CheckBox = System.Windows.Forms.CheckBox;
 using Control = System.Windows.Forms.Control;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using Label = System.Windows.Forms.Label;
 using MessageBox = System.Windows.MessageBox;
-using PdfDocument = Spire.Pdf.PdfDocument;
 using Size = System.Drawing.Size;
 using TextBox = System.Windows.Forms.TextBox;
 
@@ -35,7 +25,7 @@ namespace Autoschool
     /// <summary>
     /// Main window of the program.
     /// </summary>
-    public partial class Main : Window
+    public partial class Main
     {
         private readonly User _currentUser;
         private readonly string _currentAutoschool;
@@ -121,7 +111,7 @@ namespace Autoschool
             }
             catch (MySqlException ex)
             {
-                DataGrid.ItemsSource = null;
+                //DataGrid.ItemsSource = null;
                 DataGrid.Items.Refresh();
                 MessageBox.Show(ex.Message);
             }
@@ -173,30 +163,21 @@ namespace Autoschool
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var pdf = new PdfDocument();
-            var page = pdf.Pages.Add();
-
-            //var lessons = DatabaseModel.GetLessonsString();
-            //var encoding = Encoding.UTF8;
-            //var print = encoding.GetString(Encoding.UTF8.GetBytes(lessons));
-
-            var utf8Str = "\t\t\tja;dlf hjsdf";
-            var bytes = Encoding.Default.GetBytes(utf8Str);
-            utf8Str = Encoding.UTF8.GetString(bytes);
-
-
-            var font = new PdfFont(PdfFontFamily.Helvetica, 12f, PdfFontStyle.Regular);
-            page.Canvas.DrawString(utf8Str, font, PdfBrushes.Green, new PointF(0, 20f),
-                new PdfStringFormat(PdfTextAlignment.Center));
-            pdf.SaveToFile(@"sample.pdf");
-            Process.Start(@"sample.pdf");
+            try
+            {
+                ExportToPdf(((DataView) SearchGrid.ItemsSource).ToTable());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
         }
 
         private readonly ObservableCollection<string> _criteriaSearch = new ObservableCollection<string>();
-        private DataTable Students;
-        private DataTable Teachers;
-        private DataTable Autoschools;
-        private DataTable Lessons;
+        private DataTable _students;
+        private DataTable _teachers;
+        private DataTable _autoschools;
+        private DataTable _lessons;
 
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -319,28 +300,28 @@ namespace Autoschool
                     var dt = new DataTable();
                     var adapter = new MySqlDataAdapter(cmd);
                     adapter.Fill(dt);
-                    Autoschools = dt;
+                    _autoschools = dt;
                 }
                 using (var cmd = new MySqlCommand(teachers, connection))
                 {
                     var dt = new DataTable();
                     var adapter = new MySqlDataAdapter(cmd);
                     adapter.Fill(dt);
-                    Teachers = dt;
+                    _teachers = dt;
                 }
                 using (var cmd = new MySqlCommand(students, connection))
                 {
                     var dt = new DataTable();
                     var adapter = new MySqlDataAdapter(cmd);
                     adapter.Fill(dt);
-                    Students = dt;
+                    _students = dt;
                 }
                 using (var cmd = new MySqlCommand(lessons, connection))
                 {
                     var dt = new DataTable();
                     var adapter = new MySqlDataAdapter(cmd);
                     adapter.Fill(dt);
-                    Lessons = dt;
+                    _lessons = dt;
                 }
 
                 connection.Close();
@@ -354,16 +335,16 @@ namespace Autoschool
                 switch (CriteriaSearch.SelectedValue.ToString())
                 {
                     case "Автошколы":
-                        SearchGrid.DataContext = Autoschools;
+                        SearchGrid.DataContext = _autoschools;
                         break;
                     case "Преподаватели":
-                        SearchGrid.DataContext = Teachers;
+                        SearchGrid.DataContext = _teachers;
                         break;
                     case "Студенты":
-                        SearchGrid.DataContext = Students;
+                        SearchGrid.DataContext = _students;
                         break;
                     case "Занятия":
-                        SearchGrid.DataContext = Lessons;
+                        SearchGrid.DataContext = _lessons;
                         break;
                     default:
                         return;
@@ -445,7 +426,9 @@ namespace Autoschool
         {
             public TextPointer StartPosition;
             public TextPointer EndPosition;
+#pragma warning disable 414
             public string Word;
+#pragma warning restore 414
         }
 
         internal void CheckWordsInRun(Run run)
@@ -709,7 +692,7 @@ namespace Autoschool
         {
             if (LstStat.SelectedIndex >= 0)
             {
-                dynamic item = LstStat.SelectedItem as dynamic;
+                var item = LstStat.SelectedItem as dynamic;
                 MessageBox.Show(item.Text);
                 e.Handled = true;
             }

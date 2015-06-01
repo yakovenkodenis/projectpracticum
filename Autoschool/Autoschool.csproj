@@ -46,6 +46,15 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\Gios Pdf.NET library\Gios Pdf.NET\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\iTextSharp\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\..\iTextSharp\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>..\..\iTextSharp\itextsharp.xtra.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -111,6 +120,7 @@
     </Compile>
     <Compile Include="Query.cs" />
     <Compile Include="QueryEventArgs.cs" />
+    <Compile Include="Reviews.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleStudent.cs" />
     <Compile Include="SearchValueConverter.cs" />
