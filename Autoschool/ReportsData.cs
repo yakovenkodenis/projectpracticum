@@ -1,32 +1,37 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Windows;
 using BinaryAnalysis.UnidecodeSharp;
 
 namespace Autoschool
 {
     public partial class DatabaseModel
     {
-        private static List<User> _teachers;
-
-        public static IEnumerable<PrintEntity> GetTeachersTheoryOccupation(string currentSchool, bool isAdmin)
+        private static List<User> _people;
+        private static bool _isTeacher;
+        public static IEnumerable<PrintEntity> GetTheoryOccupation(string currentSchool, bool isAdmin, bool isTeacher)
         {
+            _isTeacher = isTeacher;
             var theory = new List<string>();
             if (!isAdmin)
             {
-                _teachers = WebsiteModel.GetUser().Where(x => x.Role.Equals("teacher") &&
-                                                              WebsiteModel.GetAutoschool()
-                                                                  .First(school => school.Name.Equals(currentSchool))
-                                                                  .Id.Equals(x.AutoschoolId)).ToList();
+                _people = isTeacher
+                    ? WebsiteModel.GetUser().Where(x => x.Role.Equals("teacher") &&
+                                                        WebsiteModel.GetAutoschool()
+                                                            .First(school => school.Name.Equals(currentSchool))
+                                                            .Id.Equals(x.AutoschoolId)).ToList()
+                    : WebsiteModel.GetUser().Where(x => x.Role.Equals("student") &&
+                                                        WebsiteModel.GetAutoschool()
+                                                            .First(school => school.Name.Equals(currentSchool))
+                                                            .Id.Equals(x.AutoschoolId)).ToList();
                 using (var client = new WebClient())
                 {
                     client.Encoding = Encoding.UTF8;
                     theory.AddRange(
-                        _teachers.Select(
+                        _people.Select(
                             x =>
                                 client.DownloadString(
                                     string.Format(
@@ -43,21 +48,16 @@ namespace Autoschool
                 yield return null;
             }
         }
-
-        public static IEnumerable<PrintEntity> GetTeachersPracticeOccupation(string currentSchool, bool isAdmin)
+        public static IEnumerable<PrintEntity> GetPracticeOccupation(string currentSchool, bool isAdmin)
         {
             var practice = new List<string>();
             if (!isAdmin)
             {
-                _teachers = WebsiteModel.GetUser().Where(x => x.Role.Equals("teacher") &&
-                                                              WebsiteModel.GetAutoschool()
-                                                                  .First(school => school.Name.Equals(currentSchool))
-                                                                  .Id.Equals(x.AutoschoolId)).ToList();
                 using (var client = new WebClient())
                 {
                     client.Encoding = Encoding.UTF8;
                     practice.AddRange(
-                        _teachers.Select(
+                        _people.Select(
                             x =>
                                 client.DownloadString(
                                     string.Format(
@@ -67,7 +67,11 @@ namespace Autoschool
                 practice = practice.Where(x => !string.IsNullOrEmpty(x)).ToList();
                 foreach (var t in practice)
                     yield return
-                        new PrintEntity {Description = "Practice. ", Table = GetPracticeTableFromList(GetCsvArray(t))};
+                        new PrintEntity
+                        {
+                            Description = "Practice. ",
+                            Table = GetPracticeTableFromList(GetCsvArray(t), _isTeacher)
+                        };
             }
             else
             {
@@ -91,7 +95,7 @@ namespace Autoschool
             return dt;
         }
 
-        private static DataTable GetPracticeTableFromList(IEnumerable<string[]> arr)
+        private static DataTable GetPracticeTableFromList(IEnumerable<string[]> arr, bool isTeacher)
         {
             var dt = new DataTable();
             dt.Clear();

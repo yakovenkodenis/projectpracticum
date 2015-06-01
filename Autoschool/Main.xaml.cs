@@ -174,8 +174,36 @@ namespace Autoschool
                 {
                     ProgressBar.IsIndeterminate = true;
                     MessageBox.Show("Ваш отчёт откроется как только будет готов. ");
-                    await ExportToPdfAsync("D://teachers.pdf");
+                    await ExportToPdfAsync("D://teachers.pdf", true);
                     ProgressBar.IsIndeterminate = false;
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Администратор не может создавать отчёты так как он не принадлежит ни одной автошколе");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
+        }
+
+        private async void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!_isAdmin)
+                {
+                    ProgressBar.IsIndeterminate = true;
+                    MessageBox.Show("Ваш отчёт откроется как только будет готов. ");
+                    await ExportToPdfAsync("D://students.pdf", false);
+                    ProgressBar.IsIndeterminate = false;
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Администратор не может создавать отчёты так как он не принадлежит ни одной автошколе");
                 }
             }
             catch (Exception ex)

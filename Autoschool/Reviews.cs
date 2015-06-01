@@ -16,11 +16,11 @@ namespace Autoschool
 {
     public partial class Main
     {
-        public async Task ExportToPdfAsync(string fileName)
+        public async Task ExportToPdfAsync(string fileName, bool isTeacher)
         {
-            await Task.Run(() => ExportToPdf(fileName));
+            await Task.Run(() => ExportToPdf(fileName, isTeacher));
         }
-        public void ExportToPdf(string fileName)
+        public void ExportToPdf(string fileName, bool isTeacher)
         {
             try
             {
@@ -32,7 +32,8 @@ namespace Autoschool
                 document.AddTitle("Отчёт автошколы " + _currentAutoschool);
                 document.AddCreator("Разработчики - студенты ХНУРЭ ПИ-13-5");
                 document.AddKeywords("отчёт");
-                document.AddSubject("Отчёт о занятости преподавателей школы " + _currentAutoschool);
+                document.AddSubject("Отчёт о занятости" + (isTeacher ? " преподавателей" : " студентов") + " школы " +
+                                    _currentAutoschool);
 
                 document.Open();
 
@@ -46,7 +47,7 @@ namespace Autoschool
                 // Theory tables
                 document.Add(
                     new Paragraph("Theory occupation." + Environment.NewLine));
-                foreach (var teacher in DatabaseModel.GetTeachersTheoryOccupation(_currentAutoschool, _isAdmin))
+                foreach (var teacher in DatabaseModel.GetTheoryOccupation(_currentAutoschool, _isAdmin, isTeacher))
                 {
                     var dt = teacher.Table;
 
@@ -78,7 +79,7 @@ namespace Autoschool
 
                 // Practice tables
                 document.Add(new Paragraph(Environment.NewLine + "Practice occupation." + Environment.NewLine));
-                foreach (var teacher in DatabaseModel.GetTeachersPracticeOccupation(_currentAutoschool, _isAdmin))
+                foreach (var teacher in DatabaseModel.GetPracticeOccupation(_currentAutoschool, _isAdmin))
                 {
                     var dt = teacher.Table;
 

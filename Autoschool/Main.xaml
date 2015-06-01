@@ -41,7 +41,7 @@
                     <GroupBox Header="Отчетность" HorizontalAlignment="Left" Margin="830,-1,0,0" VerticalAlignment="Top" Height="87" Width="139">
                     </GroupBox>
                     <Button Content="По преподавателям" HorizontalAlignment="Left" Margin="842,20,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="27" Click="Button_Click_1"/>
-                    <Button Content="По студентам" HorizontalAlignment="Left" Margin="842,52,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="25"/>
+                    <Button Content="По студентам" HorizontalAlignment="Left" Margin="842,52,0,0" VerticalAlignment="Top" Width="118" Cursor="Hand" FontFamily="HelveticaNeueCyr" Height="25" Click="Button_Click_4"/>
                     <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,-1,0,0" VerticalAlignment="Top" Height="86" Width="815">
                         <ComboBox x:Name="CriteriaSearch" HorizontalAlignment="Left" Margin="143,13,0,0" VerticalAlignment="Top" Width="225" Height="36" SelectionChanged="CriteriaSearch_SelectionChanged"/>
                     </GroupBox>
@@ -84,7 +84,7 @@
             </TabItem>
             <TabItem x:Name="Statistics" Header="Статистика">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="GridStatistics" Margin="10,144,10,10" ItemsSource="{Binding}" IsReadOnly="True"/>
+                    <DataGrid x:Name="GridStatistics" Margin="10,144,10,10" ItemsSource="{Binding}" IsReadOnly="True" FontSize="20"/>
                     <Label x:Name="TxtDescription" Content="Добро пожаловать на панель статистики. " HorizontalAlignment="Left" Margin="345,10,0,0" VerticalAlignment="Top" Height="129" Width="624" FontSize="18"/>
                     <ListBox x:Name="LstStat" HorizontalAlignment="Left" Height="129" Margin="10,10,0,0" 
                              VerticalAlignment="Top" Width="330" FontSize="16"
