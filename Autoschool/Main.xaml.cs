@@ -161,11 +161,22 @@ namespace Autoschool
             get { return new TextRange(InputQuery.Document.ContentStart, InputQuery.Document.ContentEnd).Text; }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Exports the data about teachers to PDF
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
-                ExportToPdf(((DataView) SearchGrid.ItemsSource).ToTable());
+                if (!_isAdmin)
+                {
+                    ProgressBar.IsIndeterminate = true;
+                    MessageBox.Show("Ваш отчёт откроется как только будет готов. ");
+                    await ExportToPdfAsync("D://teachers.pdf");
+                    ProgressBar.IsIndeterminate = false;
+                }
             }
             catch (Exception ex)
             {
@@ -260,7 +271,6 @@ namespace Autoschool
                     var adapter = new MySqlDataAdapter(cmd);
                     adapter.Fill(dt);
                     GridStatistics.DataContext = dt;
-                    //GridStatistics.InvalidateVisual();
                 }
                 connection.Close();
             }

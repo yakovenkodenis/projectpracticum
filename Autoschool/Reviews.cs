@@ -3,98 +3,113 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using BinaryAnalysis.UnidecodeSharp;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
+using iTextSharp.text.pdf.draw;
 
 namespace Autoschool
 {
     public partial class Main
     {
-        public void ExportToPdf(DataTable dt)
+        public async Task ExportToPdfAsync(string fileName)
+        {
+            await Task.Run(() => ExportToPdf(fileName));
+        }
+        public void ExportToPdf(string fileName)
         {
             try
             {
-                //MessageBox.Show(dt.Columns.Count.ToString());
-                //var document = new PdfDocument(PdfDocumentFormat.A4);
-                //var table = document.NewTable(new Font("HelveticaNeueCyr", 16), 200, dt.Columns.Count, 4);
-                //table.ImportDataTable(dt);
-                //table.Columns[2].SetContentFormat("{0:dd/MM/yyyy}");
-
-                //table.HeadersRow.SetColors(Color.White, Color.Navy);
-                //table.SetColors(Color.Black, Color.White, Color.Gainsboro);
-                //table.SetBorders(Color.Black, 1, BorderType.CompleteGrid);
-
-                //table.SetColumnsWidth(new[] {5, 25, 16, 20, 20, 25});
-
-                //table.Rows[7].SetColors(Color.Black, Color.LightGreen);
-
-                //table.SetContentAlignment(ContentAlignment.MiddleCenter);
-                //table.Columns[1].SetContentAlignment(ContentAlignment.MiddleLeft);
-
-                //while (!table.AllTablePagesCreated)
-                //{
-                //    var page = document.NewPage();
-                //    var tablePage = table.CreateTablePage(
-                //        new PdfArea(document,
-                //            48,
-                //            120,
-                //            500,
-                //            670));
-
-                //    var pta = new PdfTextArea(new Font("HelveticaNeueCyr", 26, System.Drawing.FontStyle.Bold),
-                //        Color.Red, new PdfArea(document, 0, 20, 595, 120), ContentAlignment.MiddleCenter, "Report");
-
-                //    page.Add(tablePage);
-                //    page.Add(pta);
-
-                //    page.SaveToDocument();
-                //}
-
-                //document.SaveToFile("Report1.pdf");
-
-
                 var document = new Document(PageSize.A4);
-                var writer = PdfWriter.GetInstance(document, new FileStream("D://example.pdf", FileMode.Create));
+                PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
 
                 document.AddAuthor(_currentUser.Name);
                 document.AddLanguage("Russian");
-                document.AddTitle("Report of the autoschool\n" + _currentAutoschool);
+                document.AddTitle("Отчёт автошколы " + _currentAutoschool);
+                document.AddCreator("Разработчики - студенты ХНУРЭ ПИ-13-5");
+                document.AddKeywords("отчёт");
+                document.AddSubject("Отчёт о занятости преподавателей школы " + _currentAutoschool);
 
                 document.Open();
 
                 var font5 = FontFactory.GetFont(FontFactory.HELVETICA, 5);
 
-
-
-                var table = new PdfPTable(dt.Columns.Count);
-                PdfPRow row = null;
-                float[] widths = {4f, 4f, 4f, 4f};
-
-                table.WidthPercentage = 100;
-                var iCol = 0;
-                var colname = "";
-                var cell = new PdfPCell(new Phrase("Products")) {Colspan = dt.Columns.Count};
-
-
-                foreach (DataColumn c in dt.Columns)
+                document.Add(
+                    new Paragraph("\t\t\t\t" + _currentAutoschool.Unidecode() + Environment.NewLine +
+                                  Environment.NewLine));
+                document.Add(new LineSeparator());
+                document.Add(new Paragraph(Environment.NewLine));
+                // Theory tables
+                document.Add(
+                    new Paragraph("Theory occupation." + Environment.NewLine));
+                foreach (var teacher in DatabaseModel.GetTeachersTheoryOccupation(_currentAutoschool, _isAdmin))
                 {
-                    table.AddCell(new Phrase(c.ColumnName, font5));
-                }
+                    var dt = teacher.Table;
 
-                foreach (var r in from DataRow r in dt.Rows where dt.Rows.Count > 0 select r)
-                {
-                    for (var i = 0; i < dt.Columns.Count; ++i)
+                    var table = new PdfPTable(dt.Columns.Count);
+                    PdfPRow row = null;
+                    float[] widths = {4f, 4f, 4f, 4f};
+
+                    table.WidthPercentage = 100;
+                    var iCol = 0;
+                    var colname = "";
+                    var cell = new PdfPCell(new Phrase("Report")) {Colspan = dt.Columns.Count};
+
+                    document.Add(new Paragraph(Environment.NewLine));
+
+                    foreach (DataColumn c in dt.Columns)
                     {
-                        table.AddCell(new Phrase(r[i].ToString(), font5));
+                        table.AddCell(new Phrase(c.ColumnName, font5));
                     }
+
+                    foreach (var r in from DataRow r in dt.Rows where dt.Rows.Count > 0 select r)
+                    {
+                        for (var i = 0; i < dt.Columns.Count; ++i)
+                        {
+                            table.AddCell(new Phrase(r[i].ToString(), font5));
+                        }
+                    }
+                    document.Add(table);
                 }
-                document.Add(table);
-                    
+
+                // Practice tables
+                document.Add(new Paragraph(Environment.NewLine + "Practice occupation." + Environment.NewLine));
+                foreach (var teacher in DatabaseModel.GetTeachersPracticeOccupation(_currentAutoschool, _isAdmin))
+                {
+                    var dt = teacher.Table;
+
+                    var table = new PdfPTable(dt.Columns.Count);
+                    PdfPRow row = null;
+                    float[] widths = { 4f, 4f, 4f, 4f };
+
+                    table.WidthPercentage = 100;
+                    var iCol = 0;
+                    var colname = "";
+                    var cell = new PdfPCell(new Phrase("Report")) { Colspan = dt.Columns.Count };
+
+                    document.Add(new Paragraph(Environment.NewLine));
+
+                    foreach (DataColumn c in dt.Columns)
+                    {
+                        table.AddCell(new Phrase(c.ColumnName, font5));
+                    }
+
+                    foreach (var r in from DataRow r in dt.Rows where dt.Rows.Count > 0 select r)
+                    {
+                        for (var i = 0; i < dt.Columns.Count; ++i)
+                        {
+                            table.AddCell(new Phrase(r[i].ToString(), font5));
+                        }
+                    }
+                    document.Add(table);
+                }
+
                 document.Close();
-                Process.Start("D://example.pdf");
+                Process.Start(fileName);
             }
             catch (Exception ex)
             {

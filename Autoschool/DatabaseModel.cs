@@ -5,13 +5,12 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace Autoschool
 {
-    public class DatabaseModel : Model
+    public partial class DatabaseModel : Model
     {
         private static MySqlConnection _connection;
         private static List<Lesson> _lessons; 
@@ -519,6 +518,6 @@ namespace Autoschool
                 });
                 j = -1;
             }
-        } 
+        }
     }
 }

@@ -65,3 +65,9 @@ D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.pdfa.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.xtra.dll
 D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\itextsharp.xml
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\CoreTechs.Common.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\FileHelpers.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\FileHelpers.ExcelStorage.dll
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\FileHelpers.xml
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\FileHelpers.ExcelStorage.xml
+D:\Visual Studio 2013\Autoschool\Autoschool\bin\Debug\UnidecodeSharp.dll
